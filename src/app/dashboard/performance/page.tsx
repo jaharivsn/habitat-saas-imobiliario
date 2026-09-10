@@ -1,3 +1,4 @@
+import { Star } from "lucide-react";
 import { mockProperties, mockBrokers } from "@/data/mockData";
 import { formatPrice } from "@/lib/utils";
 
@@ -176,8 +177,8 @@ export default function PerformancePage() {
                   <span className="font-mono font-bold text-navy-950 block">
                     {b.soldCount} vendas
                   </span>
-                  <span className="text-[10px] text-emerald-700 font-semibold">
-                    {b.rating} ★ ({b.reviewsCount})
+                  <span className="text-[10px] text-stone-600 font-medium inline-flex items-center gap-1">
+                    {b.rating} <Star className="w-2.5 h-2.5 fill-amber-500 text-amber-500" /> ({b.reviewsCount})
                   </span>
                 </div>
               </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Star, ArrowRight } from "lucide-react";
 import { mockBrokers } from "@/data/mockData";
 
 export default function AdminCorretoresPage() {
@@ -34,16 +35,19 @@ export default function AdminCorretoresPage() {
             <div className="pt-2 border-t border-slate-800 space-y-1 text-slate-400">
               <p>Imóveis Ativos: <span className="text-white font-bold">{b.activeListingsCount}</span></p>
               <p>Imóveis Vendidos: <span className="text-white font-bold">{b.soldCount}</span></p>
-              <p>Avaliação Média: <span className="text-amber-400 font-bold">{b.rating} ★</span></p>
+              <p className="flex items-center gap-1.5">
+                Avaliação Média: <span className="text-amber-400 font-bold inline-flex items-center gap-1">{b.rating} <Star className="w-3 h-3 fill-amber-400 text-amber-400" /></span>
+              </p>
             </div>
 
             <div className="pt-2 border-t border-slate-800 flex justify-between items-center">
               <Link
                 href={`/corretor/${b.slug}`}
                 target="_blank"
-                className="text-rose-400 hover:underline font-semibold"
+                className="text-rose-400 hover:underline font-semibold inline-flex items-center gap-1.5"
               >
-                Ver Vitrine Pública →
+                <span>Ver Vitrine Pública</span>
+                <ArrowRight className="w-3 h-3" />
               </Link>
               <button className="px-3 py-1 bg-slate-800 hover:bg-slate-700 text-white rounded-sm text-[11px] font-semibold uppercase tracking-wider transition">
                 Auditar

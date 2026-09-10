@@ -19,7 +19,6 @@ import {
   CheckCircle2,
   Video,
   Eye,
-  Sparkles,
   ArrowRight,
 } from "lucide-react";
 
@@ -91,34 +90,24 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
               />
             </div>
 
-            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
-              <div>
-                <div className="flex flex-wrap items-center gap-2 mb-3">
-                  <span className="px-2.5 py-1 bg-navy-950 text-white rounded-sm text-[10px] font-bold uppercase tracking-[0.16em]">
-                    {currentProp.operation === "aluguel" ? "Locação" : "Venda"}
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <span className="text-[10px] font-medium uppercase tracking-[0.25em] text-stone-500">
+                    {currentProp.operation === "aluguel" ? "Locação Residencial" : "Venda Patrimonial"}
                   </span>
-                  {currentProp.isFeatured && (
-                    <span className="px-2.5 py-1 bg-gold-500 text-navy-950 rounded-sm text-[10px] font-bold uppercase tracking-[0.16em] flex items-center gap-1 shadow-sm">
-                      <Sparkles className="w-3 h-3" />
-                      Destaque Exclusivo
-                    </span>
-                  )}
-                  {currentProp.isLaunch && (
-                    <span className="px-2.5 py-1 bg-stone-900 text-white rounded-sm text-[10px] font-bold uppercase tracking-[0.16em]">
-                      Lançamento
-                    </span>
-                  )}
-                  <span className="text-xs text-stone-400 font-mono tracking-wider ml-1">
+                  <span className="text-stone-300">•</span>
+                  <span className="text-[11px] text-stone-400 font-mono tracking-wider">
                     Cód. {currentProp.code}
                   </span>
                 </div>
 
-                <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-navy-950 max-w-4xl leading-tight tracking-tight">
+                <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-950 max-w-4xl leading-tight tracking-tight">
                   {currentProp.title}
                 </h1>
 
-                <div className="flex items-center gap-1.5 text-xs sm:text-sm text-stone-500 mt-2.5">
-                  <MapPin className="w-4 h-4 text-gold-600 shrink-0" />
+                <div className="flex items-center gap-2 text-xs sm:text-sm text-stone-500 font-light">
+                  <MapPin className="w-3.5 h-3.5 text-stone-400 shrink-0" />
                   <span>
                     {currentProp.address} — {currentProp.neighborhood}, {currentProp.city} - {currentProp.state}
                   </span>
@@ -127,14 +116,14 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
 
               {/* Price Display */}
               <div className="lg:text-right shrink-0">
-                <span className="text-[10px] uppercase text-stone-400 tracking-[0.18em] font-semibold block">
-                  Valor {currentProp.operation === "aluguel" ? "Mensal" : "de Venda"}
+                <span className="text-[10px] uppercase text-stone-400 tracking-[0.2em] font-medium block mb-1">
+                  Valor {currentProp.operation === "aluguel" ? "Mensal" : "de Aquisição"}
                 </span>
-                <div className="font-serif text-3xl sm:text-4xl font-bold text-navy-950 tracking-tight">
+                <div className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-950 tracking-tight">
                   {formatPrice(currentProp.price, currentProp.operation)}
                 </div>
 
-                <div className="flex flex-wrap lg:justify-end gap-3 mt-1.5 text-xs text-stone-500 font-medium">
+                <div className="flex flex-wrap lg:justify-end gap-3 mt-2 text-xs text-stone-400 font-light">
                   {currentProp.condoFee && (
                     <span>Condomínio: R$ {currentProp.condoFee.toLocaleString("pt-BR")}/mês</span>
                   )}
@@ -189,74 +178,75 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             {/* Left Column: Details, Specs, Description */}
-            <div className="lg:col-span-8 space-y-10">
-              {/* Quick Specs Cards */}
-              <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 p-6 bg-white rounded-xl border border-stone-200/90 shadow-subtle text-center">
-                <div className="flex flex-col items-center">
-                  <span className="flex items-center gap-1.5 text-navy-950 font-serif font-bold text-xl">
-                    <Bed className="w-5 h-5 text-gold-600" />
+            <div className="lg:col-span-8 space-y-16">
+              {/* Architectural Specs Bar */}
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-6 py-8 border-y border-stone-200 text-center">
+                <div>
+                  <span className="font-serif text-2xl sm:text-3xl text-stone-950 font-normal block">
                     {currentProp.bedrooms}
                   </span>
-                  <span className="text-xs text-stone-500 mt-1">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
                     Quartos ({currentProp.suites} suítes)
                   </span>
                 </div>
 
-                <div className="flex flex-col items-center border-l border-stone-200/60">
-                  <span className="flex items-center gap-1.5 text-navy-950 font-serif font-bold text-xl">
-                    <Bath className="w-5 h-5 text-gold-600" />
+                <div className="border-l border-stone-200">
+                  <span className="font-serif text-2xl sm:text-3xl text-stone-950 font-normal block">
                     {currentProp.bathrooms}
                   </span>
-                  <span className="text-xs text-stone-500 mt-1">Banheiros</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
+                    Banheiros
+                  </span>
                 </div>
 
-                <div className="flex flex-col items-center border-l border-stone-200/60">
-                  <span className="flex items-center gap-1.5 text-navy-950 font-serif font-bold text-xl">
-                    <Car className="w-5 h-5 text-gold-600" />
+                <div className="border-l border-stone-200">
+                  <span className="font-serif text-2xl sm:text-3xl text-stone-950 font-normal block">
                     {currentProp.parkingSpots}
                   </span>
-                  <span className="text-xs text-stone-500 mt-1">Vagas de Garagem</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
+                    Vagas
+                  </span>
                 </div>
 
-                <div className="flex flex-col items-center border-l border-stone-200/60">
-                  <span className="flex items-center gap-1.5 text-navy-950 font-serif font-bold text-xl">
-                    <Maximize className="w-5 h-5 text-gold-600" />
+                <div className="border-l border-stone-200">
+                  <span className="font-serif text-2xl sm:text-3xl text-stone-950 font-normal block">
                     {currentProp.builtArea}
                   </span>
-                  <span className="text-xs text-stone-500 mt-1">
-                    m² Úteis {currentProp.landArea ? `(${currentProp.landArea}m² Totais)` : ""}
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
+                    m² Úteis {currentProp.landArea ? `• ${currentProp.landArea}m² tot.` : ""}
                   </span>
                 </div>
 
-                <div className="flex flex-col items-center border-l border-stone-200/60 col-span-2 sm:col-span-1">
-                  <span className="flex items-center gap-1.5 text-navy-950 font-serif font-bold text-xl">
-                    <Calendar className="w-5 h-5 text-gold-600" />
+                <div className="border-l border-stone-200 col-span-2 sm:col-span-1">
+                  <span className="font-serif text-2xl sm:text-3xl text-stone-950 font-normal block">
                     {currentProp.yearBuilt || "2023"}
                   </span>
-                  <span className="text-xs text-stone-500 mt-1">Ano de Construção</span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
+                    Construção
+                  </span>
                 </div>
               </div>
 
               {/* Description */}
-              <div className="bg-white rounded-xl p-8 border border-stone-200/90 shadow-subtle space-y-4">
-                <h3 className="font-serif font-bold text-2xl text-navy-950">
+              <div className="space-y-6">
+                <h2 className="font-serif text-2xl sm:text-3xl font-normal text-stone-950 tracking-tight">
                   Sobre a Residência
-                </h3>
-                <p className="text-sm text-stone-600 leading-relaxed whitespace-pre-line">
+                </h2>
+                <p className="text-sm sm:text-base text-stone-600 font-light leading-relaxed whitespace-pre-line">
                   {currentProp.description}
                 </p>
 
                 {/* Highlights */}
                 {currentProp.highlights && currentProp.highlights.length > 0 && (
-                  <div className="pt-6 border-t border-stone-100">
-                    <h4 className="font-serif font-bold text-base text-navy-950 mb-3">
-                      Diferenciais Marcantes
-                    </h4>
-                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-stone-700">
+                  <div className="pt-8 border-t border-stone-200/80">
+                    <h3 className="font-serif text-lg font-normal text-stone-950 mb-4">
+                      Diferenciais Arquitetônicos
+                    </h3>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-stone-700 font-light">
                       {currentProp.highlights.map((hl, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <CheckCircle2 className="w-4 h-4 text-gold-600 shrink-0 mt-0.5" />
-                          <span>{hl}</span>
+                        <li key={i} className="flex items-start gap-2.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-stone-900 shrink-0 mt-1.5" />
+                          <span className="leading-relaxed">{hl}</span>
                         </li>
                       ))}
                     </ul>
@@ -265,31 +255,32 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
               </div>
 
               {/* Features & Amenities */}
-              <div className="bg-white rounded-xl p-8 border border-stone-200/90 shadow-subtle space-y-6">
+              <div className="space-y-8 pt-8 border-t border-stone-200/80">
                 <div>
-                  <h3 className="font-serif font-bold text-xl text-navy-950 mb-3">
+                  <h2 className="font-serif text-2xl sm:text-3xl font-normal text-stone-950 tracking-tight mb-4">
                     Comodidades & Lazer
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
+                  </h2>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {currentProp.amenities.map((amenity, i) => (
-                      <span
+                      <div
                         key={i}
-                        className="px-3.5 py-1.5 bg-[#FAF9F6] border border-stone-200/90 rounded-md text-xs font-medium text-stone-800"
+                        className="py-2.5 px-3 border border-stone-200/80 text-xs font-light text-stone-800 flex items-center gap-2"
                       >
-                        {amenity}
-                      </span>
+                        <span className="w-1 h-1 rounded-full bg-stone-400" />
+                        <span>{amenity}</span>
+                      </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="pt-4 border-t border-stone-100">
-                  <h3 className="font-serif font-bold text-xl text-navy-950 mb-3">
-                    Características Técnicas & Construtivas
+                <div className="pt-6">
+                  <h3 className="font-serif text-lg font-normal text-stone-950 mb-4">
+                    Especificações Técnicas
                   </h3>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-stone-700">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-stone-700 font-light">
                     {currentProp.features.map((feature, i) => (
-                      <div key={i} className="flex items-center gap-2.5 p-3 rounded-lg bg-[#FAF9F6] border border-stone-200/80">
-                        <span className="w-1.5 h-1.5 rounded-full bg-navy-950 shrink-0" />
+                      <div key={i} className="flex items-center gap-2.5 py-2 border-b border-stone-100">
+                        <span className="w-1 h-1 rounded-full bg-stone-900 shrink-0" />
                         <span>{feature}</span>
                       </div>
                     ))}
@@ -299,83 +290,85 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
 
               {/* Condominium details if applicable */}
               {currentProp.communityName && (
-                <div className="bg-navy-950 text-white rounded-xl p-8 border border-navy-800/90 shadow-luxury">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-400">
+                <div className="p-8 border border-stone-200 bg-white space-y-4">
+                  <span className="text-[10px] font-medium uppercase tracking-[0.25em] text-stone-400 block">
                     Condomínio Fechado
                   </span>
-                  <h3 className="font-serif font-bold text-2xl mt-1 tracking-tight">
+                  <h3 className="font-serif text-2xl text-stone-950 font-normal tracking-tight">
                     {currentProp.communityName}
                   </h3>
-                  <p className="text-sm text-stone-300 mt-2 leading-relaxed">
-                    Infraestrutura completa com portaria blindada, monitoramento perimetral, áreas verdes preservadas, clube de lazer e total privacidade para sua família.
+                  <p className="text-sm text-stone-600 font-light leading-relaxed">
+                    Infraestrutura de segurança perimetral, monitoramento contínuo, áreas verdes preservadas, clube privativo e máxima discrição para os residentes.
                   </p>
-                  <div className="mt-6 pt-4 border-t border-navy-800/80 flex items-center justify-between">
-                    <span className="text-xs text-stone-400">Taxa Condominial: R$ {currentProp.condoFee?.toLocaleString("pt-BR")}/mês</span>
+                  <div className="pt-4 border-t border-stone-100 flex items-center justify-between">
+                    <span className="text-xs text-stone-500 font-light">
+                      Taxa Condominial: R$ {currentProp.condoFee?.toLocaleString("pt-BR")}/mês
+                    </span>
                     <Link
                       href="/condominios"
-                      className="text-xs font-bold text-gold-400 hover:text-gold-300 transition-colors flex items-center gap-1 uppercase tracking-wider"
+                      className="text-xs font-medium text-stone-950 hover:text-stone-600 transition-colors inline-flex items-center gap-1.5 uppercase tracking-[0.16em]"
                     >
-                      <span>Ver guia de condomínios</span>
+                      <span>Guia do Condomínio</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
                   </div>
                 </div>
               )}
 
-              {/* Informações do Bairro (Requirement 5) */}
-              <div className="bg-white rounded-xl p-8 border border-stone-200/90 shadow-subtle space-y-4">
+              {/* Informações do Bairro */}
+              <div className="space-y-4 pt-8 border-t border-stone-200/80">
                 <div className="flex items-center justify-between">
-                  <h3 className="font-serif font-bold text-2xl text-navy-950">
-                    Informações do Bairro: {currentProp.neighborhood}
-                  </h3>
+                  <h2 className="font-serif text-2xl sm:text-3xl font-normal text-stone-950 tracking-tight">
+                    Bairro: {currentProp.neighborhood}
+                  </h2>
                   <Link
                     href={`/bairro/${currentProp.neighborhood.toLowerCase().replace(/ /g, '-')}`}
-                    className="text-xs font-bold text-navy-950 hover:text-gold-600 transition flex items-center gap-1 uppercase tracking-wider"
+                    className="text-xs font-medium text-stone-950 hover:text-stone-600 transition-colors inline-flex items-center gap-1.5 uppercase tracking-[0.16em]"
                   >
-                    <span>Ver guia completo</span>
-                    <ArrowRight className="w-3 h-3" />
+                    <span>Explorar Bairro</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
 
-                <p className="text-sm text-stone-600 leading-relaxed">
+                <p className="text-sm text-stone-600 font-light leading-relaxed">
                   {neighborhoodData?.description ||
-                    `O bairro ${currentProp.neighborhood} em ${currentProp.city} é conhecido pela segurança, arborização e proximidade com as melhores opções gastronômicas, escolas internacionais e centros empresariais.`}
+                    `O bairro ${currentProp.neighborhood} em ${currentProp.city} é reconhecido pelo perfil residencial nobre, arborização densa e conveniência com renomadas instituições de ensino e gastronomia.`}
                 </p>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4 border-t border-stone-100 text-xs text-stone-700">
-                  <div className="p-4 bg-[#FAF9F6] rounded-lg border border-stone-200/80">
-                    <span className="text-[10px] text-stone-400 uppercase tracking-widest font-bold block">Valor Médio do m²</span>
-                    <span className="font-bold text-navy-950 text-sm mt-0.5 block font-serif">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-stone-100 text-xs">
+                  <div>
+                    <span className="text-[10px] text-stone-400 uppercase tracking-[0.2em] font-medium block">Valor Médio do m²</span>
+                    <span className="font-serif text-xl text-stone-950 mt-1 block">
                       R$ {neighborhoodData?.avgPriceM2.toLocaleString("pt-BR") || "32.000"}/m²
                     </span>
                   </div>
-                  <div className="p-4 bg-[#FAF9F6] rounded-lg border border-stone-200/80">
-                    <span className="text-[10px] text-stone-400 uppercase tracking-widest font-bold block">Perfil da Região</span>
-                    <span className="font-bold text-navy-950 text-xs mt-0.5 block">
+                  <div>
+                    <span className="text-[10px] text-stone-400 uppercase tracking-[0.2em] font-medium block">Perfil Urbanístico</span>
+                    <span className="font-serif text-xl text-stone-950 mt-1 block">
                       Residencial Nobre
                     </span>
                   </div>
-                  <div className="p-4 bg-[#FAF9F6] rounded-lg border border-stone-200/80">
-                    <span className="text-[10px] text-stone-400 uppercase tracking-widest font-bold block">Segurança & Patrulhamento</span>
-                    <span className="font-bold text-emerald-800 text-xs mt-0.5 block">
-                      Alto Padrão / Monitorado
+                  <div>
+                    <span className="text-[10px] text-stone-400 uppercase tracking-[0.2em] font-medium block">Segurança</span>
+                    <span className="font-serif text-xl text-stone-950 mt-1 block">
+                      Patrulha Privada
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* Location & Interactive Map */}
-              <div className="bg-white rounded-xl p-8 border border-stone-200/90 shadow-subtle space-y-4">
+              {/* Location & Map */}
+              <div className="space-y-4 pt-8 border-t border-stone-200/80">
                 <div>
-                  <h3 className="font-serif font-bold text-2xl text-navy-950">
-                    Localização & Proximidades
-                  </h3>
-                  <p className="text-xs text-stone-500 mt-1">
+                  <h2 className="font-serif text-2xl sm:text-3xl font-normal text-stone-950 tracking-tight">
+                    Localização Aproximada
+                  </h2>
+                  <p className="text-xs text-stone-500 font-light mt-1">
                     {currentProp.address}, {currentProp.neighborhood}, {currentProp.city} - {currentProp.state}
                   </p>
                 </div>
 
-                <div className="h-80 rounded-lg overflow-hidden border border-stone-200/80">
+                <div className="h-80 overflow-hidden border border-stone-200/80">
                   <InteractiveMapMock
                     properties={[currentProp]}
                     selectedProperty={currentProp}
@@ -396,27 +389,22 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
 
         {/* SIMILAR PROPERTIES SECTION */}
         {similarProperties.length > 0 && (
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 pt-16 border-t border-stone-200/90">
-            <div className="flex items-center justify-between mb-8">
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-600">
-                  Opções Relacionadas
-                </span>
-                <h3 className="font-serif text-2xl font-bold text-navy-950 mt-1">
-                  Imóveis Semelhantes
-                </h3>
-              </div>
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 pt-16 border-t border-stone-200">
+            <div className="flex items-center justify-between mb-10">
+              <h2 className="font-serif text-2xl sm:text-3xl font-normal text-stone-950 tracking-tight">
+                Imóveis Semelhantes
+              </h2>
 
               <Link
                 href="/imoveis"
-                className="text-xs font-bold text-navy-950 hover:text-gold-600 transition flex items-center gap-1 uppercase tracking-wider"
+                className="text-xs font-medium text-stone-950 hover:text-stone-600 transition-colors inline-flex items-center gap-1.5 uppercase tracking-[0.16em]"
               >
-                <span>Ver mais na região</span>
+                <span>Ver Coleção Completa</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
               {similarProperties.map((prop) => (
                 <PropertyCard key={prop.id} property={prop} />
               ))}
@@ -424,29 +412,24 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
           </section>
         )}
 
-        {/* BROKER'S OTHER PROPERTIES SECTION (Requirement 5) */}
+        {/* BROKER'S OTHER PROPERTIES SECTION */}
         {brokerProperties.length > 0 && (
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-16 border-t border-stone-200/90">
-            <div className="flex items-center justify-between mb-8">
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-600">
-                  Carteira do Especialista
-                </span>
-                <h3 className="font-serif text-2xl font-bold text-navy-950 mt-1">
-                  Outros Imóveis de {currentProp.broker.name}
-                </h3>
-              </div>
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 pt-16 border-t border-stone-200">
+            <div className="flex items-center justify-between mb-10">
+              <h2 className="font-serif text-2xl sm:text-3xl font-normal text-stone-950 tracking-tight">
+                Do Mesmo Consultor: {currentProp.broker.name}
+              </h2>
 
               <Link
                 href={`/corretor/${currentProp.broker.slug}`}
-                className="text-xs font-bold text-navy-950 hover:text-gold-600 transition flex items-center gap-1 uppercase tracking-wider"
+                className="text-xs font-medium text-stone-950 hover:text-stone-600 transition-colors inline-flex items-center gap-1.5 uppercase tracking-[0.16em]"
               >
-                <span>Ver vitrine completa</span>
+                <span>Vitrine do Consultor</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
               {brokerProperties.map((prop) => (
                 <PropertyCard key={prop.id} property={prop} />
               ))}
@@ -454,24 +437,19 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
           </section>
         )}
 
-        {/* NEARBY PROPERTIES IN SAME REGION (Requirement 5) */}
+        {/* NEARBY PROPERTIES IN SAME REGION */}
         {nearbyProperties.length > 0 && (
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 pt-16 border-t border-stone-200/90">
-            <div className="flex items-center justify-between mb-8">
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-600">
-                  Na Mesma Localidade
-                </span>
-                <h3 className="font-serif text-2xl font-bold text-navy-950 mt-1">
-                  Imóveis Próximos em {currentProp.city}
-                </h3>
-              </div>
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 pt-16 border-t border-stone-200">
+            <div className="flex items-center justify-between mb-10">
+              <h2 className="font-serif text-2xl sm:text-3xl font-normal text-stone-950 tracking-tight">
+                Na Mesma Região: {currentProp.city}
+              </h2>
 
               <Link
-                href={`/imoveis?q=${encodeURIComponent(currentProp.city)}`}
-                className="text-xs font-bold text-navy-950 hover:text-gold-600 transition flex items-center gap-1 uppercase tracking-wider"
+                href={`/cidade/${currentProp.city.toLowerCase().replace(/ /g, '-')}`}
+                className="text-xs font-medium text-stone-950 hover:text-stone-600 transition-colors inline-flex items-center gap-1.5 uppercase tracking-[0.16em]"
               >
-                <span>Ver todos em {currentProp.city}</span>
+                <span>Explorar Região</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>

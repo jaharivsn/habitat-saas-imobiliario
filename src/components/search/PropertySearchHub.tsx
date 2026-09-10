@@ -150,22 +150,22 @@ export default function PropertySearchHub({
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
       {/* Top Banner / Breadcrumb */}
-      <div className="mb-8">
-        <div className="flex items-center gap-2 text-xs text-stone-400 mb-2">
+      <div className="mb-10">
+        <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-stone-400 mb-3 font-medium">
           <span>Início</span>
           <span>/</span>
-          <span className="text-stone-800 font-semibold">{pageTitle}</span>
+          <span className="text-stone-800">{pageTitle}</span>
         </div>
-        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-navy-950 tracking-tight">
+        <h1 className="font-serif text-3xl sm:text-5xl font-normal text-stone-950 tracking-tight">
           {pageTitle}
         </h1>
-        <p className="text-sm text-stone-600 mt-1 max-w-2xl">{pageSubtitle}</p>
+        <p className="text-sm text-stone-500 mt-2 max-w-2xl font-light leading-relaxed">{pageSubtitle}</p>
       </div>
 
       {/* Main Filter Bar */}
-      <div className="bg-white rounded-xl p-4 shadow-subtle border border-stone-200/90 mb-8 space-y-4">
+      <div className="bg-white p-5 sm:p-6 border border-stone-200 mb-10 space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3">
           {/* Keyword Search */}
           <div className="lg:col-span-4 relative">
@@ -175,7 +175,7 @@ export default function PropertySearchHub({
               placeholder="Buscar por cidade, bairro, condomínio ou código..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-[#FAF9F6] border border-stone-200/90 rounded-lg text-xs sm:text-sm text-stone-900 focus:outline-none focus:border-navy-950 placeholder:text-stone-400"
+              className="w-full pl-10 pr-4 py-3 bg-stone-50/70 border border-stone-200 text-xs sm:text-sm text-stone-900 focus:outline-none focus:border-stone-950 placeholder:text-stone-400 font-light"
             />
           </div>
 
@@ -185,7 +185,7 @@ export default function PropertySearchHub({
               <select
                 value={operation}
                 onChange={(e) => setOperation(e.target.value)}
-                className="w-full py-2.5 px-3 bg-[#FAF9F6] border border-stone-200/90 rounded-lg text-xs sm:text-sm text-stone-800 focus:outline-none cursor-pointer"
+                className="w-full py-3 px-3 bg-stone-50/70 border border-stone-200 text-xs sm:text-sm text-stone-800 focus:outline-none cursor-pointer font-light"
               >
                 <option value="todos">Venda & Locação</option>
                 <option value="venda">Comprar (Venda)</option>
@@ -200,7 +200,7 @@ export default function PropertySearchHub({
               <select
                 value={propertyType}
                 onChange={(e) => setPropertyType(e.target.value)}
-                className="w-full py-2.5 px-3 bg-[#FAF9F6] border border-stone-200/90 rounded-lg text-xs sm:text-sm text-stone-800 focus:outline-none cursor-pointer"
+                className="w-full py-3 px-3 bg-stone-50/70 border border-stone-200 text-xs sm:text-sm text-stone-800 focus:outline-none cursor-pointer font-light"
               >
                 <option value="todos">Todos os Tipos</option>
                 <option value="casa">Casas & Mansões</option>
@@ -217,7 +217,7 @@ export default function PropertySearchHub({
             <select
               value={city}
               onChange={(e) => setCity(e.target.value)}
-              className="w-full py-2.5 px-3 bg-[#FAF9F6] border border-stone-200/90 rounded-lg text-xs sm:text-sm text-stone-800 focus:outline-none cursor-pointer"
+              className="w-full py-3 px-3 bg-stone-50/70 border border-stone-200 text-xs sm:text-sm text-stone-800 focus:outline-none cursor-pointer font-light"
             >
               <option value="todas">Todas as Cidades</option>
               <option value="São Paulo">São Paulo</option>
@@ -234,9 +234,9 @@ export default function PropertySearchHub({
             <button
               type="button"
               onClick={() => setIsFilterModalOpen(true)}
-              className="flex-1 py-2.5 px-3 bg-stone-100/90 hover:bg-stone-200/80 text-navy-950 font-semibold text-xs tracking-wider uppercase rounded-lg flex items-center justify-center gap-1.5 transition-colors border border-stone-200/90"
+              className="flex-1 py-3 px-3 bg-stone-100 hover:bg-stone-200 text-stone-900 font-medium text-xs tracking-[0.16em] uppercase flex items-center justify-center gap-2 transition-colors border border-stone-200"
             >
-              <SlidersHorizontal className="w-3.5 h-3.5 text-gold-700" />
+              <SlidersHorizontal className="w-3.5 h-3.5 text-stone-500" />
               <span>Filtros (+12)</span>
             </button>
 
@@ -244,7 +244,7 @@ export default function PropertySearchHub({
               <button
                 type="button"
                 onClick={resetFilters}
-                className="p-2.5 text-stone-400 hover:text-stone-800 rounded-lg hover:bg-stone-100 transition-colors border border-transparent hover:border-stone-200"
+                className="p-3 text-stone-400 hover:text-stone-800 hover:bg-stone-100 transition-colors border border-transparent hover:border-stone-200"
                 title="Limpar todos os filtros"
               >
                 <RotateCcw className="w-4 h-4" />

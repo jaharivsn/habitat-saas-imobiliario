@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CheckSquare, AlertTriangle } from "lucide-react";
+import { CheckSquare, AlertTriangle, ArrowRight } from "lucide-react";
 import { mockProperties } from "@/data/mockData";
 
 export default function AdminDashboardPage() {
@@ -52,8 +52,9 @@ export default function AdminDashboardPage() {
             Aguardando Moderação
           </span>
           <div className="font-serif font-bold text-2xl text-rose-300 mt-1">3</div>
-          <Link href="/admin/moderacao" className="text-[10px] text-rose-400 font-bold hover:underline uppercase tracking-wider">
-            Analisar fila agora →
+          <Link href="/admin/moderacao" className="text-[10px] text-rose-400 font-bold hover:underline uppercase tracking-wider inline-flex items-center gap-1">
+            <span>Analisar fila agora</span>
+            <ArrowRight className="w-3 h-3" />
           </Link>
         </div>
       </div>

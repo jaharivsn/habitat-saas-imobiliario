@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { mockAgencies } from "@/data/mockData";
 
 export default function AdminImobiliariasPage() {
@@ -46,9 +47,10 @@ export default function AdminImobiliariasPage() {
               <Link
                 href={`/imobiliaria/${a.slug}`}
                 target="_blank"
-                className="text-rose-400 hover:underline font-semibold"
+                className="text-rose-400 hover:underline font-semibold inline-flex items-center gap-1.5"
               >
-                Página Institucional →
+                <span>Página Institucional</span>
+                <ArrowRight className="w-3 h-3" />
               </Link>
               <button className="px-3 py-1 bg-slate-800 hover:bg-slate-700 text-white rounded-sm text-[11px] font-semibold uppercase tracking-wider transition">
                 Gerenciar Acesso

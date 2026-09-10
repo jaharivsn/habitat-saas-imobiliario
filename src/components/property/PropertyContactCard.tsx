@@ -68,35 +68,34 @@ export default function PropertyContactCard({
 
   return (
     <>
-      <div className="bg-white rounded-xl p-6 sm:p-7 border border-stone-200/90 shadow-luxury lg:sticky lg:top-28 space-y-6">
+      <div className="bg-white p-7 sm:p-8 border border-stone-200 lg:sticky lg:top-28 space-y-6">
         {/* Header Corretor */}
-        <div className="flex items-start gap-4 pb-5 border-b border-stone-100">
-          <Link href={`/corretor/${broker.slug}`} className="relative shrink-0">
+        <div className="flex items-start gap-4 pb-6 border-b border-stone-100">
+          <Link href={`/corretor/${broker.slug}`} className="shrink-0">
             <img
               src={broker.photo}
               alt={broker.name}
-              className="w-16 h-16 rounded-full object-cover border border-stone-200 shadow-subtle"
+              className="w-16 h-16 object-cover border border-stone-200"
             />
-            <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-600 border-2 border-white rounded-full" />
           </Link>
 
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-1.5">
               <Link
                 href={`/corretor/${broker.slug}`}
-                className="font-serif font-semibold text-slate-900 text-lg leading-tight hover:text-gold-700 transition truncate"
+                className="font-serif font-normal text-stone-950 text-xl leading-tight hover:text-stone-600 transition truncate"
               >
                 {broker.name}
               </Link>
               <span title="Verificado" className="inline-flex">
-                <ShieldCheck className="w-4 h-4 text-gold-700 shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-stone-400 shrink-0" />
               </span>
             </div>
 
-            <p className="text-[11px] font-mono text-slate-400 mt-0.5">CRECI {broker.creci}</p>
+            <p className="text-[11px] font-mono text-stone-400 mt-0.5">CRECI {broker.creci}</p>
 
             {broker.agencyName && (
-              <p className="text-xs font-semibold text-gold-700 truncate mt-0.5 tracking-wide">
+              <p className="text-xs font-light text-stone-500 truncate mt-0.5 tracking-wide">
                 {broker.agencyName}
               </p>
             )}
@@ -104,25 +103,25 @@ export default function PropertyContactCard({
         </div>
 
         {/* Contact direct contacts */}
-        <div className="space-y-2 text-xs text-slate-600">
+        <div className="space-y-2.5 text-xs text-stone-600 font-light">
           <div className="flex items-center gap-2.5">
-            <Phone className="w-4 h-4 text-gold-700 shrink-0" />
+            <Phone className="w-4 h-4 text-stone-400 shrink-0" />
             <span className="font-mono text-[11px]">{broker.phone}</span>
           </div>
           <div className="flex items-center gap-2.5">
-            <Mail className="w-4 h-4 text-gold-700 shrink-0" />
-            <span className="truncate text-[11px] font-light">{broker.email}</span>
+            <Mail className="w-4 h-4 text-stone-400 shrink-0" />
+            <span className="truncate text-[11px]">{broker.email}</span>
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="space-y-2.5 pt-2">
+        <div className="space-y-3 pt-2">
           {/* WhatsApp Button */}
           <a
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full bg-[#1D7F54] hover:bg-[#166B44] text-white font-semibold text-xs uppercase tracking-wider py-3.5 px-4 rounded-sm flex items-center justify-center gap-2 shadow-subtle transition-all duration-300"
+            className="w-full bg-[#1D7F54] hover:bg-[#166B44] text-white font-medium text-xs uppercase tracking-[0.18em] py-3.5 px-4 flex items-center justify-center gap-2 transition-colors"
           >
             <MessageCircle className="w-4 h-4" />
             <span>Falar no WhatsApp</span>
@@ -132,9 +131,9 @@ export default function PropertyContactCard({
           <button
             type="button"
             onClick={() => setMessageModalOpen(true)}
-            className="w-full bg-navy-950 hover:bg-gold-600 hover:text-navy-950 text-white font-semibold text-xs uppercase tracking-wider py-3.5 px-4 rounded-sm flex items-center justify-center gap-2 shadow-subtle transition-all duration-300"
+            className="w-full bg-stone-950 hover:bg-stone-800 text-white font-medium text-xs uppercase tracking-[0.18em] py-3.5 px-4 flex items-center justify-center gap-2 transition-colors"
           >
-            <Send className="w-4 h-4 text-gold-400" />
+            <Send className="w-4 h-4 text-stone-300" />
             <span>Enviar Mensagem</span>
           </button>
 
@@ -142,17 +141,17 @@ export default function PropertyContactCard({
           <button
             type="button"
             onClick={() => setVisitModalOpen(true)}
-            className="w-full bg-stone-100 hover:bg-stone-200/80 text-slate-800 font-semibold text-xs uppercase tracking-wider py-3 px-4 rounded-sm flex items-center justify-center gap-2 border border-stone-200 transition-all duration-300"
+            className="w-full border border-stone-300 hover:border-stone-900 text-stone-900 font-medium text-xs uppercase tracking-[0.18em] py-3 px-4 flex items-center justify-center gap-2 transition-colors"
           >
-            <Calendar className="w-4 h-4 text-gold-700" />
+            <Calendar className="w-4 h-4 text-stone-400" />
             <span>Agendar Visita</span>
           </button>
         </div>
 
         {/* Security pledge */}
         <div className="pt-4 border-t border-stone-100 text-center">
-          <span className="text-[10px] uppercase tracking-wider text-slate-400 flex items-center justify-center gap-1.5 font-medium">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
+          <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 flex items-center justify-center gap-1.5 font-light">
+            <ShieldCheck className="w-3.5 h-3.5 text-stone-400" />
             Atendimento confidencial & sem intermediários
           </span>
         </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { mockProperties } from "@/data/mockData";
 import { formatPrice } from "@/lib/utils";
 
@@ -45,9 +46,10 @@ export default function AdminImoveisPage() {
                     <Link
                       href={`/imovel/${p.slug}`}
                       target="_blank"
-                      className="text-slate-400 hover:text-white"
+                      className="text-slate-400 hover:text-white inline-flex items-center gap-1.5"
                     >
-                      Ver Anúncio →
+                      <span>Ver Anúncio</span>
+                      <ArrowRight className="w-3 h-3" />
                     </Link>
                   </td>
                 </tr>

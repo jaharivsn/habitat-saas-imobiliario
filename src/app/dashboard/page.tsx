@@ -8,6 +8,7 @@ import {
   PlusCircle,
   Clock,
   CheckCircle2,
+  ArrowRight,
 } from "lucide-react";
 import { mockProperties, mockLeads, mockCalendarEvents } from "@/data/mockData";
 import { formatPrice } from "@/lib/utils";
@@ -172,8 +173,9 @@ export default function DashboardOverviewPage() {
                 Destaques Patrocinados
               </span>
             </div>
-            <Link href="/dashboard/performance" className="text-xs font-semibold uppercase tracking-wider text-navy-950 hover:text-gold-700 transition">
-              Ver Relatório Detalhado →
+            <Link href="/dashboard/performance" className="text-xs font-semibold uppercase tracking-wider text-navy-950 hover:text-gold-700 transition inline-flex items-center gap-1.5">
+              <span>Ver Relatório Detalhado</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>
@@ -217,8 +219,9 @@ export default function DashboardOverviewPage() {
             <h3 className="font-serif font-semibold text-lg text-navy-950">
               Últimos Contatos & Oportunidades (CRM)
             </h3>
-            <Link href="/dashboard/leads" className="text-xs font-semibold uppercase tracking-wider text-navy-950 hover:text-gold-700 transition">
-              Abrir Funil Kanban →
+            <Link href="/dashboard/leads" className="text-xs font-semibold uppercase tracking-wider text-navy-950 hover:text-gold-700 transition inline-flex items-center gap-1.5">
+              <span>Abrir Funil Kanban</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 

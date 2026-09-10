@@ -18,6 +18,7 @@ import {
   CheckCircle2,
   MapPin,
   Sparkles,
+  ArrowRight,
 } from "lucide-react";
 
 export default function ContaCompradorPage() {
@@ -132,8 +133,9 @@ export default function ContaCompradorPage() {
               <h2 className="font-serif font-bold text-xl text-navy-950">
                 Imóveis Salvos na sua Lista
               </h2>
-              <Link href="/comparar" className="text-xs font-bold text-navy-900 hover:underline">
-                Comparar no Comparador Lado a Lado →
+              <Link href="/comparar" className="text-xs font-bold text-navy-900 hover:underline inline-flex items-center gap-1.5">
+                <span>Comparar no Comparador Lado a Lado</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -7,6 +7,7 @@ import {
   Columns,
   List,
   MessageCircle,
+  ArrowRight,
 } from "lucide-react";
 import { mockLeads } from "@/data/mockData";
 import { Lead, LeadStatus } from "@/types";
@@ -195,9 +196,10 @@ export default function LeadsCRMPage() {
 
                             <Link
                               href={`/dashboard/leads/${lead.id}`}
-                              className="text-[11px] font-bold text-navy-900 hover:text-gold-600 ml-1"
+                              className="text-[11px] font-bold text-navy-900 hover:text-gold-600 ml-1 inline-flex items-center gap-1"
                             >
-                              Ver →
+                              <span>Ver</span>
+                              <ArrowRight className="w-3 h-3" />
                             </Link>
                           </div>
                         </div>
