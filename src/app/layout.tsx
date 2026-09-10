@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { AuthProvider } from "@/lib/auth-context";
+import RoleSwitcherBar from "@/components/shared/RoleSwitcherBar";
 
 export const metadata: Metadata = {
   title: "Habitat | Private Real Estate & Boutique SaaS",
@@ -23,9 +25,13 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-[#FAF9F6] text-slate-900 flex flex-col font-sans selection:bg-navy-950 selection:text-gold-300">
-        {children}
+        <AuthProvider>
+          {children}
+          <RoleSwitcherBar />
+        </AuthProvider>
       </body>
     </html>
   );
 }
+
 

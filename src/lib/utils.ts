@@ -1,11 +1,14 @@
-export function formatPrice(price: number, operation: "venda" | "aluguel" = "venda"): string {
+export function formatPrice(
+  price: number,
+  operation: "venda" | "aluguel" | "sale" | "rent" | "development" = "venda"
+): string {
   const formatted = new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
     maximumFractionDigits: 0,
   }).format(price);
 
-  if (operation === "aluguel") {
+  if (operation === "aluguel" || operation === "rent") {
     return `${formatted}/mês`;
   }
   return formatted;

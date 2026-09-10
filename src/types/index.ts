@@ -1,4 +1,16 @@
-export type OperationType = "venda" | "aluguel";
+// Canonical System Types (Specification Next.js 16)
+export type PropertyOperation = "sale" | "rent" | "development";
+export type PropertyStatus =
+  | "draft"
+  | "under_review"
+  | "published"
+  | "paused"
+  | "sold"
+  | "rented"
+  | "archived";
+export type UserRole = "public" | "agent" | "agency_owner" | "platform_admin";
+
+export type OperationType = "venda" | "aluguel" | PropertyOperation;
 
 export type PropertyType =
   | "casa"
@@ -10,13 +22,27 @@ export type PropertyType =
   | "rural";
 
 export type ListingStatus =
-  | "draft"
-  | "review"
-  | "published"
-  | "paused"
-  | "sold"
-  | "rented"
-  | "archived";
+  | PropertyStatus
+  | "review";
+
+export interface Agent {
+  id: string;
+  slug: string;
+  name: string;
+  creci: string;
+  email: string;
+  phone: string;
+  whatsapp: string;
+  avatarUrl: string;
+  bio: string;
+  agencyId?: string;
+  agencyName?: string;
+  specialties: string[];
+  activePropertiesCount: number;
+  soldVolumeTotal: number;
+  rating: number;
+  reviewsCount: number;
+}
 
 export interface Broker {
   id: string;
@@ -24,6 +50,7 @@ export interface Broker {
   name: string;
   creci: string;
   photo: string;
+  avatarUrl?: string;
   banner?: string;
   bio: string;
   phone: string;
@@ -38,7 +65,7 @@ export interface Broker {
   reviewsCount: number;
   activeListingsCount: number;
   soldCount: number;
-  socialLinks: {
+  socialLinks?: {
     instagram?: string;
     linkedin?: string;
     website?: string;
@@ -59,18 +86,69 @@ export interface Agency {
   slug: string;
   name: string;
   logo: string;
-  banner: string;
+  logoUrl?: string;
+  banner?: string;
   description: string;
   address: string;
-  city: string;
-  state: string;
+  city?: string;
+  state?: string;
   phone: string;
-  whatsapp: string;
-  website: string;
-  teamCount: number;
-  listingsCount: number;
+  whatsapp?: string;
+  email?: string;
+  website?: string;
+  teamCount?: number;
+  agentCount?: number;
+  listingsCount?: number;
+  activePropertiesCount?: number;
   regions: string[];
-  verified: boolean;
+  verified?: boolean;
+}
+
+export interface PropertyAddress {
+  city: string;
+  neighborhood: string;
+  condominium?: string;
+  approximateLocation: string;
+}
+
+export interface PropertySpecs {
+  bedrooms: number;
+  suites: number;
+  bathrooms: number;
+  parkingSpaces: number;
+  builtArea: number; // m²
+  totalArea: number; // m²
+  constructionYear?: number;
+}
+
+export interface PropertyMedia {
+  coverUrl: string;
+  gallery: string[];
+  videoUrl?: string;
+  virtualTourUrl?: string;
+}
+
+export interface PropertyFinancials {
+  condoFee?: number;
+  iptuMonthly?: number;
+}
+
+export interface CanonicalProperty {
+  id: string;
+  slug: string;
+  title: string;
+  price: number;
+  operation: PropertyOperation;
+  status: PropertyStatus;
+  isFeatured: boolean;
+  isLuxury: boolean;
+  address: PropertyAddress;
+  specs: PropertySpecs;
+  amenities: string[];
+  media: PropertyMedia;
+  financials: PropertyFinancials;
+  agentId: string;
+  agencyId?: string;
 }
 
 export interface Property {
@@ -78,17 +156,18 @@ export interface Property {
   slug: string;
   code: string;
   title: string;
-  operation: OperationType;
-  propertyType: PropertyType;
   price: number;
-  rentalPeriod?: "mensal" | "anual" | "temporada";
-  condoFee?: number;
-  iptu?: number;
+  operation: PropertyOperation | OperationType;
+  status: PropertyStatus | ListingStatus;
+  isFeatured: boolean;
+  isLuxury?: boolean;
   address: string;
+  approximateLocation?: string;
   neighborhood: string;
   city: string;
   state: string;
   zipCode?: string;
+  specs?: PropertySpecs;
   bedrooms: number;
   suites: number;
   bathrooms: number;
@@ -96,25 +175,31 @@ export interface Property {
   builtArea: number; // m²
   landArea?: number; // m²
   yearBuilt?: number;
+  propertyType: PropertyType;
+  rentalPeriod?: "mensal" | "anual" | "temporada";
+  condoFee?: number;
+  iptu?: number;
+  financials?: PropertyFinancials;
   description: string;
   highlights: string[];
   features: string[];
   amenities: string[];
+  media?: PropertyMedia;
   photos: string[];
   videoUrl?: string;
   virtualTourUrl?: string;
-  isFeatured: boolean;
-  isNew: boolean;
-  isLaunch: boolean;
-  isWaterfront: boolean;
-  isGatedCommunity: boolean;
-  isFurnished: boolean;
-  allowsPets: boolean;
-  isCommercial: boolean;
-  hasPool: boolean;
-  status: ListingStatus;
+  isNew?: boolean;
+  isLaunch?: boolean;
+  isWaterfront?: boolean;
+  isGatedCommunity?: boolean;
+  isFurnished?: boolean;
+  allowsPets?: boolean;
+  isCommercial?: boolean;
+  hasPool?: boolean;
   viewsCount: number;
   leadsCount: number;
+  agentId?: string;
+  agencyId?: string;
   broker: Broker;
   agency?: {
     id: string;
@@ -172,6 +257,14 @@ export interface NeighborhoodInfo {
 }
 
 export type LeadStatus =
+  | "new"
+  | "contacted"
+  | "qualified"
+  | "visit_scheduled"
+  | "negotiation"
+  | "proposal"
+  | "won"
+  | "lost"
   | "novo"
   | "contatado"
   | "qualificado"
@@ -181,22 +274,43 @@ export type LeadStatus =
   | "fechado"
   | "perdido";
 
+export interface LeadNote {
+  id: string;
+  content: string;
+  timestamp: string;
+}
+
+export interface CanonicalLead {
+  id: string;
+  name: string;
+  phone: string;
+  email: string;
+  propertyId: string;
+  agentId: string;
+  status: LeadStatus;
+  source: "whatsapp" | "portal_form" | "direct_phone";
+  createdAt: string;
+  notes: Array<{ id: string; content: string; timestamp: string }>;
+}
+
 export interface Lead {
   id: string;
   name: string;
   phone: string;
-  whatsapp: string;
+  whatsapp?: string;
   email: string;
   propertyId: string;
   propertyTitle: string;
   propertyPrice: number;
-  source: "WhatsApp" | "Site" | "Instagram" | "Indicação" | "Portal";
+  agentId?: string;
   brokerId: string;
   brokerName: string;
   status: LeadStatus;
+  source: "whatsapp" | "portal_form" | "direct_phone" | "WhatsApp" | "Site" | "Instagram" | "Indicação" | "Portal";
   createdAt: string;
-  lastInteraction: string;
+  lastInteraction?: string;
   notes: string[];
+  notesTimeline?: LeadNote[];
   tasks?: {
     id: string;
     title: string;

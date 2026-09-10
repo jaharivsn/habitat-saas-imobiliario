@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import SearchBar from "@/components/search/SearchBar";
-import PropertyCard from "@/components/property/PropertyCard";
+import ZeroGravitySearch from "@/components/kinetic/ZeroGravitySearch";
+import ParallaxCard from "@/components/kinetic/ParallaxCard";
 import { mockProperties } from "@/data/mockData";
 import { ArrowRight } from "lucide-react";
 
@@ -67,9 +67,9 @@ export default function HomePage() {
               Curadoria rigorosa de residências contemporâneas, coberturas icônicas e refúgios em condomínios fechados para quem busca ativos patrimoniais irreplicáveis.
             </p>
 
-            {/* Barra de busca limpa */}
+            {/* Kinetic Zero Gravity Search Bar */}
             <div className="w-full mt-10 sm:mt-12">
-              <SearchBar variant="hero" />
+              <ZeroGravitySearch />
             </div>
           </div>
         </section>
@@ -98,10 +98,10 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Grid Elegante de 6 Propriedades */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 sm:gap-12">
+            {/* Grid Elegante com ParallaxCard 4:3 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
               {curatedProperties.map((property, idx) => (
-                <PropertyCard
+                <ParallaxCard
                   key={property.id}
                   property={property}
                   priority={idx === 0}
