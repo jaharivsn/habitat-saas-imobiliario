@@ -93,16 +93,16 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
             <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <span className="text-[10px] font-medium uppercase tracking-[0.25em] text-stone-500">
+                  <span className="text-[10px] font-medium uppercase tracking-[0.25em] text-stone-500 font-mono">
                     {currentProp.operation === "aluguel" ? "Locação Residencial" : "Venda Patrimonial"}
                   </span>
                   <span className="text-stone-300">•</span>
                   <span className="text-[11px] text-stone-400 font-mono tracking-wider">
-                    Cód. {currentProp.code}
+                    REF {currentProp.code}
                   </span>
                 </div>
 
-                <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-950 max-w-4xl leading-tight tracking-tight">
+                <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-normal text-stone-950 max-w-4xl leading-[1.08] tracking-normal">
                   {currentProp.title}
                 </h1>
 
@@ -119,11 +119,11 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                 <span className="text-[10px] uppercase text-stone-400 tracking-[0.2em] font-medium block mb-1">
                   Valor {currentProp.operation === "aluguel" ? "Mensal" : "de Aquisição"}
                 </span>
-                <div className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal text-stone-950 tracking-tight">
+                <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-normal text-stone-950 tracking-tight tabular-nums">
                   {formatPrice(currentProp.price, currentProp.operation)}
                 </div>
 
-                <div className="flex flex-wrap lg:justify-end gap-3 mt-2 text-xs text-stone-400 font-light">
+                <div className="flex flex-wrap lg:justify-end gap-3 mt-2 text-xs text-stone-400 font-light tabular-nums">
                   {currentProp.condoFee && (
                     <span>Condomínio: R$ {currentProp.condoFee.toLocaleString("pt-BR")}/mês</span>
                   )}
@@ -182,7 +182,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
               {/* Architectural Specs Bar */}
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-6 py-8 border-y border-stone-200 text-center">
                 <div>
-                  <span className="font-serif text-2xl sm:text-3xl text-stone-950 font-normal block">
+                  <span className="font-display text-3xl sm:text-4xl text-stone-950 font-normal block tabular-nums">
                     {currentProp.bedrooms}
                   </span>
                   <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
@@ -191,7 +191,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                 </div>
 
                 <div className="border-l border-stone-200">
-                  <span className="font-serif text-2xl sm:text-3xl text-stone-950 font-normal block">
+                  <span className="font-display text-3xl sm:text-4xl text-stone-950 font-normal block tabular-nums">
                     {currentProp.bathrooms}
                   </span>
                   <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
@@ -200,7 +200,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                 </div>
 
                 <div className="border-l border-stone-200">
-                  <span className="font-serif text-2xl sm:text-3xl text-stone-950 font-normal block">
+                  <span className="font-display text-3xl sm:text-4xl text-stone-950 font-normal block tabular-nums">
                     {currentProp.parkingSpots}
                   </span>
                   <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
@@ -209,7 +209,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                 </div>
 
                 <div className="border-l border-stone-200">
-                  <span className="font-serif text-2xl sm:text-3xl text-stone-950 font-normal block">
+                  <span className="font-display text-3xl sm:text-4xl text-stone-950 font-normal block tabular-nums">
                     {currentProp.builtArea}
                   </span>
                   <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
@@ -218,7 +218,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                 </div>
 
                 <div className="border-l border-stone-200 col-span-2 sm:col-span-1">
-                  <span className="font-serif text-2xl sm:text-3xl text-stone-950 font-normal block">
+                  <span className="font-display text-3xl sm:text-4xl text-stone-950 font-normal block tabular-nums">
                     {currentProp.yearBuilt || "2023"}
                   </span>
                   <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
@@ -229,7 +229,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
 
               {/* Description */}
               <div className="space-y-6">
-                <h2 className="font-serif text-2xl sm:text-3xl font-normal text-stone-950 tracking-tight">
+                <h2 className="font-display text-3xl sm:text-4xl font-normal text-stone-950 tracking-normal">
                   Sobre a Residência
                 </h2>
                 <p className="text-sm sm:text-base text-stone-600 font-light leading-relaxed whitespace-pre-line">

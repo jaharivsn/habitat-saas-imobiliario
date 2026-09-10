@@ -155,14 +155,14 @@ export default function PropertyCard({ property, priority = false }: PropertyCar
 
           {/* Título editorial com tipografia refinada */}
           <Link href={`/imovel/${property.slug}`} className="block group-hover:text-stone-600 transition-colors">
-            <h3 className="font-serif text-base sm:text-lg text-stone-950 font-normal leading-snug line-clamp-1">
+            <h3 className="font-display text-lg sm:text-xl text-stone-950 font-normal leading-snug line-clamp-1 group-hover:text-stone-700 transition-colors">
               {property.title}
             </h3>
           </Link>
 
           {/* Especificações em linha única refinada */}
           {specs && (
-            <p className="text-xs text-stone-500 font-light tracking-wide pt-0.5">
+            <p className="text-xs text-stone-500 font-light tracking-wide pt-0.5 tabular-nums">
               {specs}
             </p>
           )}
@@ -170,7 +170,7 @@ export default function PropertyCard({ property, priority = false }: PropertyCar
 
         {/* Preço limpo em destaque */}
         <div className="pt-3 border-t border-stone-100 flex items-baseline justify-between">
-          <div className="font-serif text-lg sm:text-xl font-normal text-stone-950 tracking-tight">
+          <div className="text-lg sm:text-xl font-medium text-stone-950 tracking-tight tabular-nums">
             {formatPrice(property.price, property.operation)}
           </div>
           <Link

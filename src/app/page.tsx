@@ -57,13 +57,13 @@ export default function HomePage() {
           </div>
 
           <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center flex flex-col items-center">
-            {/* Headline Editorial Pura (Sem sombrancelha) */}
-            <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl text-white font-normal tracking-tight leading-[1.08] max-w-4xl">
+            {/* Monumental Headline in Italiana */}
+            <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl text-white font-normal tracking-normal leading-[1.05] max-w-4xl">
               Arquitetura Autoral & Residências Singulares
             </h1>
 
             {/* Subheadline serena */}
-            <p className="mt-6 text-base sm:text-lg lg:text-xl text-stone-300 max-w-2xl font-light leading-relaxed">
+            <p className="mt-7 text-base sm:text-lg lg:text-xl text-stone-300 max-w-2xl font-light leading-relaxed tracking-wide">
               Curadoria rigorosa de residências contemporâneas, coberturas icônicas e refúgios em condomínios fechados para quem busca ativos patrimoniais irreplicáveis.
             </p>
 
@@ -77,11 +77,14 @@ export default function HomePage() {
         {/* ======================================================== */}
         {/* BLOCO 2: CURADORIA SELETA (4 a 6 propriedades icônicas)   */}
         {/* ======================================================== */}
-        <section className="py-28 sm:py-36 bg-[#FAF9F6] border-b border-stone-200/70">
+        <section className="py-28 sm:py-36 bg-[#FAF9F5] border-b border-stone-200/70">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
               <div>
-                <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-stone-950">
+                <span className="text-[11px] uppercase tracking-[0.25em] font-mono text-stone-400 block mb-2">
+                  Acervo Exclusivo 2026
+                </span>
+                <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-normal tracking-normal text-stone-950">
                   Curadoria Seleta
                 </h2>
                 <p className="text-stone-500 text-sm sm:text-base mt-3 max-w-xl font-light leading-relaxed">
@@ -112,13 +115,15 @@ export default function HomePage() {
         </section>
 
         {/* ======================================================== */}
-        {/* ======================================================== */}
         {/* BLOCO 3: ESTILOS DE VIDA / CATEGORIAS                    */}
         {/* ======================================================== */}
         <section className="py-28 sm:py-36 bg-white border-b border-stone-200/70">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl mb-16">
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-stone-950">
+              <span className="text-[11px] uppercase tracking-[0.25em] font-mono text-stone-400 block mb-2">
+                Coleções Temáticas
+              </span>
+              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-normal tracking-normal text-stone-950">
                 Estilos de Vida
               </h2>
               <p className="text-stone-500 text-sm sm:text-base mt-3 font-light leading-relaxed">
@@ -177,7 +182,10 @@ export default function HomePage() {
               {/* Texto Revista / Kinfolk */}
               <div className="lg:col-span-5 space-y-6">
                 <div>
-                  <h2 className="font-serif text-3xl sm:text-4xl font-normal tracking-tight text-stone-950 leading-tight">
+                  <span className="text-[11px] uppercase tracking-[0.25em] font-mono text-stone-400 block mb-2">
+                    Destaque Arquitetônico
+                  </span>
+                  <h2 className="font-display text-4xl sm:text-5xl font-normal tracking-normal text-stone-950 leading-tight">
                     Fazenda Boa Vista: A Síntese do Campo Contemporâneo
                   </h2>
                 </div>
@@ -193,7 +201,7 @@ export default function HomePage() {
                 {/* Métricas Editoriais com Hairline Dividers */}
                 <div className="grid grid-cols-3 gap-6 pt-6 border-t border-stone-200">
                   <div>
-                    <span className="font-serif text-2xl sm:text-3xl text-stone-950 block">
+                    <span className="font-display text-3xl sm:text-4xl text-stone-950 block tabular-nums">
                       12M m²
                     </span>
                     <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
@@ -201,7 +209,7 @@ export default function HomePage() {
                     </span>
                   </div>
                   <div>
-                    <span className="font-serif text-2xl sm:text-3xl text-stone-950 block">
+                    <span className="font-display text-3xl sm:text-4xl text-stone-950 block">
                       Fasano
                     </span>
                     <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
@@ -209,7 +217,7 @@ export default function HomePage() {
                     </span>
                   </div>
                   <div>
-                    <span className="font-serif text-2xl sm:text-3xl text-stone-950 block">
+                    <span className="font-display text-3xl sm:text-4xl text-stone-950 block tabular-nums">
                       18 min
                     </span>
                     <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
@@ -237,7 +245,10 @@ export default function HomePage() {
         {/* ======================================================== */}
         <section className="py-28 sm:py-36 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-stone-950 max-w-3xl mx-auto leading-tight">
+            <span className="text-[11px] uppercase tracking-[0.25em] font-mono text-stone-400 block mb-3">
+              Compromisso Fiduciário
+            </span>
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-normal tracking-normal text-stone-950 max-w-3xl mx-auto leading-tight">
               Discrição Absoluta & Diligência Patrimonial
             </h2>
             <p className="mt-6 text-sm sm:text-base text-stone-600 font-light max-w-2xl mx-auto leading-relaxed">
@@ -245,8 +256,8 @@ export default function HomePage() {
             </p>
 
             <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-4xl mx-auto">
-              <div className="p-8 border border-stone-200 bg-[#FAF9F6]">
-                <h3 className="font-serif text-xl font-normal text-stone-950 mb-2">
+              <div className="p-8 border border-stone-200/80 bg-[#FAF9F5]">
+                <h3 className="font-display text-2xl font-normal text-stone-950 mb-2">
                   Curadoria Off-Market
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
@@ -254,8 +265,8 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="p-8 border border-stone-200 bg-[#FAF9F6]">
-                <h3 className="font-serif text-xl font-normal text-stone-950 mb-2">
+              <div className="p-8 border border-stone-200/80 bg-[#FAF9F5]">
+                <h3 className="font-display text-2xl font-normal text-stone-950 mb-2">
                   Tecnologia para Boutiques
                 </h3>
                 <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">

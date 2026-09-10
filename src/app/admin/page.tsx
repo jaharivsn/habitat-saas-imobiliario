@@ -7,53 +7,58 @@ export default function AdminDashboardPage() {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <span className="text-xs font-mono font-bold uppercase tracking-widest text-rose-400">
-          Governança da Plataforma
-        </span>
-        <h1 className="font-serif text-3xl font-bold text-white mt-1">
-          Painel de Controle Administrativo
+        <div className="flex items-center gap-2 mb-1">
+          <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
+          <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-rose-400">
+            Habitat Ecosystem Governance
+          </span>
+        </div>
+        <h1 className="font-display text-3xl sm:text-4xl font-normal text-white tracking-normal">
+          Painel de Controle & Moderação Master
         </h1>
-        <p className="text-xs text-slate-400 mt-1">
-          Supervisão global de assinaturas, moderação de qualidade e integridade do ecossistema.
+        <p className="text-xs text-slate-400 mt-1 font-light">
+          Supervisão fiduciária de carteira, conformidade de anúncios e integridade operacional.
         </p>
       </div>
 
       {/* Global Macro KPIs */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-white">
-        <div className="bg-[#121826] p-5 rounded-xl border border-slate-800 shadow-subtle">
+        <div className="bg-[#121826] p-5 rounded-xl border border-slate-800/80 shadow-subtle space-y-1">
+          <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">
+            GMV em Carteira Ativa
+          </span>
+          <div className="font-display text-3xl text-gold-300 tabular-nums">
+            R$ 480M
+          </div>
+          <span className="text-[10px] text-stone-400 font-mono">148 ativos cadastrados</span>
+        </div>
+
+        <div className="bg-[#121826] p-5 rounded-xl border border-slate-800/80 shadow-subtle space-y-1">
           <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">
             MRR Estimado (SaaS)
           </span>
-          <div className="font-serif font-bold text-2xl text-emerald-400 mt-1">
+          <div className="font-display text-3xl text-emerald-400 tabular-nums">
             R$ 84.900
           </div>
-          <span className="text-[10px] text-emerald-500 font-semibold font-mono">+14.2% este mês</span>
+          <span className="text-[10px] text-emerald-500 font-mono">+14.2% este mês</span>
         </div>
 
-        <div className="bg-[#121826] p-5 rounded-xl border border-slate-800 shadow-subtle">
+        <div className="bg-[#121826] p-5 rounded-xl border border-slate-800/80 shadow-subtle space-y-1">
           <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">
-            Corretores Ativos
+            Corretores & Boutiques
           </span>
-          <div className="font-serif font-bold text-2xl mt-1">452</div>
+          <div className="font-display text-3xl text-white tabular-nums">452 / 68</div>
           <span className="text-[10px] text-slate-400 font-mono">89% no Plano Pro</span>
         </div>
 
-        <div className="bg-[#121826] p-5 rounded-xl border border-slate-800 shadow-subtle">
-          <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">
-            Imobiliárias Conectadas
-          </span>
-          <div className="font-serif font-bold text-2xl mt-1">68</div>
-          <span className="text-[10px] text-slate-400">Boutiques & Redes</span>
-        </div>
-
-        <div className="bg-[#121826] p-5 rounded-xl border border-rose-900/60 shadow-subtle">
-          <span className="text-[10px] font-mono text-rose-400 uppercase font-bold tracking-wider block flex items-center gap-1.5">
+        <div className="bg-[#121826] p-5 rounded-xl border border-rose-900/60 shadow-subtle space-y-1">
+          <span className="text-[10px] font-mono text-rose-400 uppercase tracking-wider block flex items-center gap-1.5">
             <AlertTriangle className="w-3 h-3 text-rose-400" />
-            Aguardando Moderação
+            Fila de Análise
           </span>
-          <div className="font-serif font-bold text-2xl text-rose-300 mt-1">3</div>
-          <Link href="/admin/moderacao" className="text-[10px] text-rose-400 font-bold hover:underline uppercase tracking-wider inline-flex items-center gap-1">
-            <span>Analisar fila agora</span>
+          <div className="font-display text-3xl text-rose-300 tabular-nums">3</div>
+          <Link href="/admin/moderacao" className="text-[10px] text-rose-400 hover:underline uppercase font-mono tracking-wider inline-flex items-center gap-1">
+            <span>Revisar pendências</span>
             <ArrowRight className="w-3 h-3" />
           </Link>
         </div>

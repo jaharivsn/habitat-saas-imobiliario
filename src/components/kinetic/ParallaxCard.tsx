@@ -155,13 +155,13 @@ export default function ParallaxCard({ property, priority = false }: ParallaxCar
 
           {/* Editorial Title */}
           <Link href={`/imovel/${property.slug}`} className="block group/title">
-            <h3 className="font-serif text-lg text-slate-900 font-medium leading-snug group-hover/title:text-navy-900 transition-colors line-clamp-1">
+            <h3 className="font-display text-xl text-stone-950 font-normal leading-snug group-hover/title:text-stone-700 transition-colors line-clamp-1">
               {property.title}
             </h3>
           </Link>
 
           {/* Hairline specs bar */}
-          <div className="mt-3 pt-3 border-t border-stone-100 flex items-center text-xs text-stone-600 tracking-tight gap-2">
+          <div className="mt-3 pt-3 border-t border-stone-100 flex items-center text-xs text-stone-600 tracking-tight gap-2 tabular-nums">
             <span>{builtArea} m²</span>
             <span className="text-stone-300">•</span>
             <span>{suites > 0 ? `${suites} suítes` : `${bedrooms} dorms`}</span>
@@ -173,10 +173,10 @@ export default function ParallaxCard({ property, priority = false }: ParallaxCar
         {/* Footer: Price & Direct Link */}
         <div className="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between">
           <div>
-            <span className="text-[10px] tracking-wider uppercase text-stone-600 block leading-none font-medium">
+            <span className="text-[10px] tracking-wider uppercase text-stone-400 block leading-none font-medium">
               Valor
             </span>
-            <span className="text-base font-semibold text-slate-900 tracking-tight">
+            <span className="text-base font-medium text-stone-950 tracking-tight tabular-nums">
               {formatPrice(property.price, property.operation as any)}
             </span>
           </div>
