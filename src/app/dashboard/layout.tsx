@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import DashboardSidebar from "@/components/layout/DashboardSidebar";
 import DashboardHeader from "@/components/layout/DashboardHeader";
 import { X } from "lucide-react";
@@ -10,7 +11,18 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
+  const pathname = usePathname();
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      const hasSession = document.cookie.split(";").some((c) => c.trim().startsWith("habitat_session="));
+      if (!hasSession) {
+        router.replace(`/entrar?next=${encodeURIComponent(pathname)}`);
+      }
+    }
+  }, [pathname, router]);
 
   return (
     <div className="min-h-screen bg-slate-50 flex">
