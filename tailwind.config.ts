@@ -65,9 +65,9 @@ const config: Config = {
         400: "400ms",
       },
       fontFamily: {
-        display: ["Italiana", "serif"],
+        display: ["Inter", "-apple-system", "BlinkMacSystemFont", "system-ui", "sans-serif"],
         sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "system-ui", "sans-serif"],
-        serif: ["Cormorant Garamond", "Playfair Display", "Georgia", "serif"],
+        serif: ["Inter", "-apple-system", "BlinkMacSystemFont", "system-ui", "sans-serif"],
         mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
       },
       transitionTimingFunction: {

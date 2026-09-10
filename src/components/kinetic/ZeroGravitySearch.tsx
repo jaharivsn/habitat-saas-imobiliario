@@ -10,6 +10,7 @@ const SEARCH_TABS = [
   { id: "sale", label: "Comprar", queryParam: "venda" },
   { id: "rent", label: "Alugar", queryParam: "aluguel" },
   { id: "development", label: "Lançamentos", queryParam: "lancamentos" },
+  { id: "investment", label: "Investir", queryParam: "investir" },
 ] as const;
 
 const QUICK_CURATIONS = [
@@ -21,7 +22,7 @@ const QUICK_CURATIONS = [
 
 export default function ZeroGravitySearch() {
   const router = useRouter();
-  const [activeTab, setActiveTab] = useState<"sale" | "rent" | "development">("sale");
+  const [activeTab, setActiveTab] = useState<"sale" | "rent" | "development" | "investment">("sale");
   const [searchQuery, setSearchQuery] = useState("");
   const [propertyType, setPropertyType] = useState("todos");
   const [priceRange, setPriceRange] = useState("todos");

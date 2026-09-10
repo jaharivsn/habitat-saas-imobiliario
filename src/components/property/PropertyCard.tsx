@@ -154,8 +154,8 @@ export default function PropertyCard({ property, priority = false }: PropertyCar
           </p>
 
           {/* Título editorial com tipografia refinada */}
-          <Link href={`/imovel/${property.slug}`} className="block group-hover:text-stone-600 transition-colors">
-            <h3 className="font-display text-lg sm:text-xl text-stone-950 font-normal leading-snug line-clamp-1 group-hover:text-stone-700 transition-colors">
+          <Link href={`/imovel/${property.slug}`} className="block group-hover:text-slate-600 transition-colors">
+            <h3 className="text-base sm:text-lg font-semibold text-slate-900 leading-snug line-clamp-1 group-hover:text-slate-700 transition-colors">
               {property.title}
             </h3>
           </Link>

@@ -13,7 +13,7 @@ export default function AdminDashboardPage() {
             Habitat Ecosystem Governance
           </span>
         </div>
-        <h1 className="font-display text-3xl sm:text-4xl font-normal text-white tracking-normal">
+        <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
           Painel de Controle & Moderação Master
         </h1>
         <p className="text-xs text-slate-400 mt-1 font-light">
@@ -27,7 +27,7 @@ export default function AdminDashboardPage() {
           <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">
             GMV em Carteira Ativa
           </span>
-          <div className="font-display text-3xl text-gold-300 tabular-nums">
+          <div className="text-2xl sm:text-3xl font-bold text-amber-300 tabular-nums">
             R$ 480M
           </div>
           <span className="text-[10px] text-stone-400 font-mono">148 ativos cadastrados</span>
@@ -37,7 +37,7 @@ export default function AdminDashboardPage() {
           <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">
             MRR Estimado (SaaS)
           </span>
-          <div className="font-display text-3xl text-emerald-400 tabular-nums">
+          <div className="text-2xl sm:text-3xl font-bold text-emerald-400 tabular-nums">
             R$ 84.900
           </div>
           <span className="text-[10px] text-emerald-500 font-mono">+14.2% este mês</span>
@@ -47,7 +47,7 @@ export default function AdminDashboardPage() {
           <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider block">
             Corretores & Boutiques
           </span>
-          <div className="font-display text-3xl text-white tabular-nums">452 / 68</div>
+          <div className="text-2xl sm:text-3xl font-bold text-white tabular-nums">452 / 68</div>
           <span className="text-[10px] text-slate-400 font-mono">89% no Plano Pro</span>
         </div>
 
@@ -56,7 +56,7 @@ export default function AdminDashboardPage() {
             <AlertTriangle className="w-3 h-3 text-rose-400" />
             Fila de Análise
           </span>
-          <div className="font-display text-3xl text-rose-300 tabular-nums">3</div>
+          <div className="text-2xl sm:text-3xl font-bold text-rose-300 tabular-nums">3</div>
           <Link href="/admin/moderacao" className="text-[10px] text-rose-400 hover:underline uppercase font-mono tracking-wider inline-flex items-center gap-1">
             <span>Revisar pendências</span>
             <ArrowRight className="w-3 h-3" />

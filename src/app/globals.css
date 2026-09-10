@@ -4,13 +4,11 @@
 
 @layer base {
   :root {
-    --font-display: "Italiana", serif;
     --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-serif: "Cormorant Garamond", Georgia, serif;
   }
 
   body {
-    @apply bg-[#FAF9F5] text-stone-900 antialiased selection:bg-stone-950 selection:text-stone-100 font-sans;
+    @apply bg-slate-50 text-slate-900 antialiased selection:bg-slate-900 selection:text-white font-sans;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11", "tnum";
   }
 

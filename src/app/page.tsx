@@ -57,14 +57,14 @@ export default function HomePage() {
           </div>
 
           <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center flex flex-col items-center">
-            {/* Monumental Headline in Italiana */}
-            <h1 className="font-display text-5xl sm:text-7xl lg:text-8xl text-white font-normal tracking-normal leading-[1.05] max-w-4xl">
-              Arquitetura Autoral & Residências Singulares
+            {/* Headline canônica do MVP em Sans-serif */}
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight max-w-4xl">
+              Encontre seu próximo imóvel
             </h1>
 
-            {/* Subheadline serena */}
-            <p className="mt-7 text-base sm:text-lg lg:text-xl text-stone-300 max-w-2xl font-light leading-relaxed tracking-wide">
-              Curadoria rigorosa de residências contemporâneas, coberturas icônicas e refúgios em condomínios fechados para quem busca ativos patrimoniais irreplicáveis.
+            {/* Subheadline clean */}
+            <p className="mt-6 text-base sm:text-lg lg:text-xl text-slate-200 max-w-2xl font-normal leading-relaxed">
+              Curadoria de residências de alto padrão, coberturas e oportunidades exclusivas para morar ou investir nas melhores regiões.
             </p>
 
             {/* Kinetic Zero Gravity Search Bar */}
@@ -77,18 +77,18 @@ export default function HomePage() {
         {/* ======================================================== */}
         {/* BLOCO 2: CURADORIA SELETA (4 a 6 propriedades icônicas)   */}
         {/* ======================================================== */}
-        <section className="py-28 sm:py-36 bg-[#FAF9F5] border-b border-stone-200/70">
+        <section className="py-24 sm:py-32 bg-slate-50 border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
               <div>
-                <span className="text-[11px] uppercase tracking-[0.25em] font-mono text-stone-400 block mb-2">
+                <span className="text-xs uppercase tracking-wider font-semibold text-slate-400 block mb-2">
                   Acervo Exclusivo 2026
                 </span>
-                <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-normal tracking-normal text-stone-950">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900">
                   Curadoria Seleta
                 </h2>
-                <p className="text-stone-500 text-sm sm:text-base mt-3 max-w-xl font-light leading-relaxed">
-                  Uma coleção criteriosa de propriedades singulares que redefinem o morar contemporâneo em localizações exclusivas.
+                <p className="text-slate-600 text-sm sm:text-base mt-3 max-w-xl font-normal leading-relaxed">
+                  Uma seleção criteriosa de propriedades singulares que redefinem o morar contemporâneo em localizações privilegiadas.
                 </p>
               </div>
 
@@ -117,41 +117,41 @@ export default function HomePage() {
         {/* ======================================================== */}
         {/* BLOCO 3: ESTILOS DE VIDA / CATEGORIAS                    */}
         {/* ======================================================== */}
-        <section className="py-28 sm:py-36 bg-white border-b border-stone-200/70">
+        <section className="py-24 sm:py-32 bg-white border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl mb-16">
-              <span className="text-[11px] uppercase tracking-[0.25em] font-mono text-stone-400 block mb-2">
+            <div className="max-w-2xl mb-14">
+              <span className="text-xs uppercase tracking-wider font-semibold text-slate-400 block mb-2">
                 Coleções Temáticas
               </span>
-              <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-normal tracking-normal text-stone-950">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900">
                 Estilos de Vida
               </h2>
-              <p className="text-stone-500 text-sm sm:text-base mt-3 font-light leading-relaxed">
+              <p className="text-slate-600 text-sm sm:text-base mt-3 font-normal leading-relaxed">
                 Espaços pensados para acolher diferentes momentos da vida, do sossego do campo à vitalidade dos grandes centros.
               </p>
             </div>
 
             {/* Grid Editorial de Estilos de Vida */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-12">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
               {lifestyles.map((item) => (
                 <Link
                   key={item.title}
                   href={item.href}
-                  className="group block overflow-hidden border border-stone-200/70 hover:border-stone-400 transition-colors duration-400"
+                  className="group block overflow-hidden rounded-xl border border-slate-200 hover:border-slate-300 hover:shadow-md transition-all duration-300"
                 >
-                  <div className="relative aspect-[16/10] overflow-hidden bg-stone-100">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700 ease-out"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent pointer-events-none" />
 
-                    <div className="absolute bottom-8 left-8 right-8 text-white">
-                      <h3 className="font-serif text-2xl sm:text-3xl font-normal leading-snug">
+                    <div className="absolute bottom-6 left-6 right-6 text-white">
+                      <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-white mb-1.5">
                         {item.title}
                       </h3>
-                      <p className="text-xs sm:text-sm text-stone-200 font-light mt-2 line-clamp-1">
+                      <p className="text-xs sm:text-sm text-slate-200 font-normal line-clamp-2 max-w-md">
                         {item.subtitle}
                       </p>
                     </div>
@@ -163,64 +163,64 @@ export default function HomePage() {
         </section>
 
         {/* ======================================================== */}
-        {/* BLOCO 4: DESTAQUE DE CONDOMÍNIO (Editorial Revista)      */}
+        {/* BLOCO 4: DESTAQUE DE CONDOMÍNIO (REVISTA / FULL-BLEED)   */}
         {/* ======================================================== */}
-        <section className="py-28 sm:py-36 bg-[#FAF9F6] border-b border-stone-200/70">
+        <section className="py-24 sm:py-32 bg-slate-50 border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-              {/* Imagem Editorial */}
+              {/* Imagem Principal */}
               <div className="lg:col-span-7">
-                <div className="relative aspect-[16/11] overflow-hidden bg-stone-100 border border-stone-200">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg border border-slate-200">
                   <img
-                    src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1600&q=85"
-                    alt="Fazenda Boa Vista, arquitetura de campo contemporânea"
+                    src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=85"
+                    alt="Fazenda Boa Vista"
                     className="w-full h-full object-cover"
                   />
                 </div>
               </div>
 
-              {/* Texto Revista / Kinfolk */}
+              {/* Informações */}
               <div className="lg:col-span-5 space-y-6">
                 <div>
-                  <span className="text-[11px] uppercase tracking-[0.25em] font-mono text-stone-400 block mb-2">
+                  <span className="text-xs uppercase tracking-wider font-semibold text-slate-400 block mb-2">
                     Destaque Arquitetônico
                   </span>
-                  <h2 className="font-display text-4xl sm:text-5xl font-normal tracking-normal text-stone-950 leading-tight">
+                  <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 leading-tight">
                     Fazenda Boa Vista: A Síntese do Campo Contemporâneo
                   </h2>
                 </div>
 
-                <p className="text-stone-600 text-sm sm:text-base font-light leading-relaxed">
+                <p className="text-slate-600 text-sm sm:text-base font-normal leading-relaxed">
                   A apenas uma hora de São Paulo, mais de 12 milhões de metros quadrados de mata nativa preservada acolhem residências assinadas pelos maiores expoentes da arquitetura brasileira.
                 </p>
 
-                <p className="text-stone-600 text-sm sm:text-base font-light leading-relaxed">
+                <p className="text-slate-600 text-sm sm:text-base font-normal leading-relaxed">
                   Entre lagos privativos, centro hípico de padrão internacional e dois campos de golfe desenhados por Arnold Palmer, a privacidade, o bem-estar e a segurança encontram sua mais alta expressão.
                 </p>
 
-                {/* Métricas Editoriais com Hairline Dividers */}
-                <div className="grid grid-cols-3 gap-6 pt-6 border-t border-stone-200">
+                {/* Métricas com Hairline Dividers */}
+                <div className="grid grid-cols-3 gap-6 pt-6 border-t border-slate-200">
                   <div>
-                    <span className="font-display text-3xl sm:text-4xl text-stone-950 block tabular-nums">
+                    <span className="text-2xl sm:text-3xl font-bold text-slate-900 block tabular-nums">
                       12M m²
                     </span>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
+                    <span className="text-xs uppercase tracking-wider text-slate-500 mt-1 block font-medium">
                       Mata e Lagos
                     </span>
                   </div>
                   <div>
-                    <span className="font-display text-3xl sm:text-4xl text-stone-950 block">
+                    <span className="text-2xl sm:text-3xl font-bold text-slate-900 block">
                       Fasano
                     </span>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
+                    <span className="text-xs uppercase tracking-wider text-slate-500 mt-1 block font-medium">
                       Hospitalidade
                     </span>
                   </div>
                   <div>
-                    <span className="font-display text-3xl sm:text-4xl text-stone-950 block tabular-nums">
+                    <span className="text-2xl sm:text-3xl font-bold text-slate-900 block tabular-nums">
                       18 min
                     </span>
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
+                    <span className="text-xs uppercase tracking-wider text-slate-500 mt-1 block font-medium">
                       Heliponto de SP
                     </span>
                   </div>
@@ -229,10 +229,10 @@ export default function HomePage() {
                 <div className="pt-4">
                   <Link
                     href="/condominio/fazenda-boa-vista"
-                    className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.2em] font-medium text-stone-950 hover:text-stone-600 transition-colors"
+                    className="inline-flex items-center gap-2 text-xs uppercase tracking-wider font-semibold text-slate-900 hover:text-slate-600 transition-colors"
                   >
                     <span>Explorar Condomínio</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
               </div>
@@ -241,35 +241,35 @@ export default function HomePage() {
         </section>
 
         {/* ======================================================== */}
-        {/* BLOCO 5: MANIFESTO PRIVATE WEALTH / ADVISORY DISCRETO    */}
+        {/* BLOCO 5: MANIFESTO / ADVISORY DISCRETO                   */}
         {/* ======================================================== */}
-        <section className="py-28 sm:py-36 bg-white">
+        <section className="py-24 sm:py-32 bg-white">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span className="text-[11px] uppercase tracking-[0.25em] font-mono text-stone-400 block mb-3">
+            <span className="text-xs uppercase tracking-wider font-semibold text-slate-400 block mb-3">
               Compromisso Fiduciário
             </span>
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-normal tracking-normal text-stone-950 max-w-3xl mx-auto leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 max-w-3xl mx-auto leading-tight">
               Discrição Absoluta & Diligência Patrimonial
             </h2>
-            <p className="mt-6 text-sm sm:text-base text-stone-600 font-light max-w-2xl mx-auto leading-relaxed">
+            <p className="mt-6 text-sm sm:text-base text-slate-600 font-normal max-w-2xl mx-auto leading-relaxed">
               A negociação de ativos imobiliários singulares exige rigor ético, profundidade técnica e sigilo irrestrito. A Habitat conecta famílias e investidores a uma rede seleta de consultorias especializadas, viabilizando transações off-market com diligência jurídica integral.
             </p>
 
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-4xl mx-auto">
-              <div className="p-8 border border-stone-200/80 bg-[#FAF9F5]">
-                <h3 className="font-display text-2xl font-normal text-stone-950 mb-2">
+            <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-8 text-left max-w-4xl mx-auto">
+              <div className="p-8 rounded-xl border border-slate-200 bg-slate-50">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">
                   Curadoria Off-Market
                 </h3>
-                <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
+                <p className="text-sm text-slate-600 font-normal leading-relaxed">
                   Acesso reservado a propriedades que não ingressam em listagens públicas, preservando a intimidade das partes e garantindo negociações diretas entre pares qualificados.
                 </p>
               </div>
 
-              <div className="p-8 border border-stone-200/80 bg-[#FAF9F5]">
-                <h3 className="font-display text-2xl font-normal text-stone-950 mb-2">
+              <div className="p-8 rounded-xl border border-slate-200 bg-slate-50">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">
                   Tecnologia para Boutiques
                 </h3>
-                <p className="text-xs sm:text-sm text-stone-600 font-light leading-relaxed">
+                <p className="text-sm text-slate-600 font-normal leading-relaxed">
                   Infraestrutura de software e CRM desenhada para consultorias imobiliárias independentes que priorizam excelência de portfólio e atendimento concierge.
                 </p>
               </div>

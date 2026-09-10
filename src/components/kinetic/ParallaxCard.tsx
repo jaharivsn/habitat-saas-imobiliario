@@ -155,7 +155,7 @@ export default function ParallaxCard({ property, priority = false }: ParallaxCar
 
           {/* Editorial Title */}
           <Link href={`/imovel/${property.slug}`} className="block group/title">
-            <h3 className="font-display text-xl text-stone-950 font-normal leading-snug group-hover/title:text-stone-700 transition-colors line-clamp-1">
+            <h3 className="text-lg font-semibold text-slate-900 leading-snug group-hover/title:text-slate-700 transition-colors line-clamp-1">
               {property.title}
             </h3>
           </Link>

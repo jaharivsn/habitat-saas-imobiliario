@@ -102,12 +102,12 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                   </span>
                 </div>
 
-                <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-normal text-stone-950 max-w-4xl leading-[1.08] tracking-normal">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 max-w-4xl leading-tight tracking-tight">
                   {currentProp.title}
                 </h1>
 
-                <div className="flex items-center gap-2 text-xs sm:text-sm text-stone-500 font-light">
-                  <MapPin className="w-3.5 h-3.5 text-stone-400 shrink-0" />
+                <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-500 font-normal">
+                  <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                   <span>
                     {currentProp.address} — {currentProp.neighborhood}, {currentProp.city} - {currentProp.state}
                   </span>
@@ -116,10 +116,10 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
 
               {/* Price Display */}
               <div className="lg:text-right shrink-0">
-                <span className="text-[10px] uppercase text-stone-400 tracking-[0.2em] font-medium block mb-1">
+                <span className="text-xs uppercase text-slate-400 tracking-wider font-semibold block mb-1">
                   Valor {currentProp.operation === "aluguel" ? "Mensal" : "de Aquisição"}
                 </span>
-                <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-normal text-stone-950 tracking-tight tabular-nums">
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 tracking-tight tabular-nums">
                   {formatPrice(currentProp.price, currentProp.operation)}
                 </div>
 
@@ -180,48 +180,48 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
             {/* Left Column: Details, Specs, Description */}
             <div className="lg:col-span-8 space-y-16">
               {/* Architectural Specs Bar */}
-              <div className="grid grid-cols-2 sm:grid-cols-5 gap-6 py-8 border-y border-stone-200 text-center">
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-6 py-8 border-y border-slate-200 text-center">
                 <div>
-                  <span className="font-display text-3xl sm:text-4xl text-stone-950 font-normal block tabular-nums">
+                  <span className="text-2xl sm:text-3xl font-bold text-slate-900 block tabular-nums">
                     {currentProp.bedrooms}
                   </span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
+                  <span className="text-xs uppercase tracking-wider text-slate-400 mt-1 block font-medium">
                     Quartos ({currentProp.suites} suítes)
                   </span>
                 </div>
 
-                <div className="border-l border-stone-200">
-                  <span className="font-display text-3xl sm:text-4xl text-stone-950 font-normal block tabular-nums">
+                <div className="border-l border-slate-200">
+                  <span className="text-2xl sm:text-3xl font-bold text-slate-900 block tabular-nums">
                     {currentProp.bathrooms}
                   </span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
+                  <span className="text-xs uppercase tracking-wider text-slate-400 mt-1 block font-medium">
                     Banheiros
                   </span>
                 </div>
 
-                <div className="border-l border-stone-200">
-                  <span className="font-display text-3xl sm:text-4xl text-stone-950 font-normal block tabular-nums">
+                <div className="border-l border-slate-200">
+                  <span className="text-2xl sm:text-3xl font-bold text-slate-900 block tabular-nums">
                     {currentProp.parkingSpots}
                   </span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
+                  <span className="text-xs uppercase tracking-wider text-slate-400 mt-1 block font-medium">
                     Vagas
                   </span>
                 </div>
 
-                <div className="border-l border-stone-200">
-                  <span className="font-display text-3xl sm:text-4xl text-stone-950 font-normal block tabular-nums">
+                <div className="border-l border-slate-200">
+                  <span className="text-2xl sm:text-3xl font-bold text-slate-900 block tabular-nums">
                     {currentProp.builtArea}
                   </span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
+                  <span className="text-xs uppercase tracking-wider text-slate-400 mt-1 block font-medium">
                     m² Úteis {currentProp.landArea ? `• ${currentProp.landArea}m² tot.` : ""}
                   </span>
                 </div>
 
-                <div className="border-l border-stone-200 col-span-2 sm:col-span-1">
-                  <span className="font-display text-3xl sm:text-4xl text-stone-950 font-normal block tabular-nums">
+                <div className="border-l border-slate-200 col-span-2 sm:col-span-1">
+                  <span className="text-2xl sm:text-3xl font-bold text-slate-900 block tabular-nums">
                     {currentProp.yearBuilt || "2023"}
                   </span>
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-stone-400 mt-1 block font-medium">
+                  <span className="text-xs uppercase tracking-wider text-slate-400 mt-1 block font-medium">
                     Construção
                   </span>
                 </div>
@@ -229,7 +229,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
 
               {/* Description */}
               <div className="space-y-6">
-                <h2 className="font-display text-3xl sm:text-4xl font-normal text-stone-950 tracking-normal">
+                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
                   Sobre a Residência
                 </h2>
                 <p className="text-sm sm:text-base text-stone-600 font-light leading-relaxed whitespace-pre-line">

@@ -35,7 +35,7 @@ export default function DashboardOverviewPage() {
                 Command Center • Compass OS
               </span>
             </div>
-            <h1 className="font-display text-3xl sm:text-4xl text-stone-950 font-normal tracking-normal">
+            <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
               Bom dia, Carlos Mendes
             </h1>
             <p className="text-xs sm:text-sm text-stone-500 mt-1 font-light">
@@ -123,7 +123,7 @@ export default function DashboardOverviewPage() {
             <span className="text-[10px] font-mono uppercase tracking-wider">Ativos</span>
             <Building className="w-3.5 h-3.5 text-stone-700" />
           </div>
-          <div className="font-display text-3xl text-stone-950 tabular-nums">14</div>
+          <div className="text-2xl sm:text-3xl font-bold text-slate-900 tabular-nums">14</div>
           <span className="text-[10px] text-emerald-700 font-mono font-medium block">
             +2 novos este mês
           </span>
@@ -135,7 +135,7 @@ export default function DashboardOverviewPage() {
             <span className="text-[10px] font-mono uppercase tracking-wider">Análise</span>
             <Clock className="w-3.5 h-3.5 text-amber-600" />
           </div>
-          <div className="font-display text-3xl text-stone-950 tabular-nums">2</div>
+          <div className="text-2xl sm:text-3xl font-bold text-slate-900 tabular-nums">2</div>
           <span className="text-[10px] text-stone-400 font-mono block">Em governança</span>
         </div>
 
@@ -145,7 +145,7 @@ export default function DashboardOverviewPage() {
             <span className="text-[10px] font-mono uppercase tracking-wider">Concluídos</span>
             <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
           </div>
-          <div className="font-display text-3xl text-stone-950 tabular-nums">37</div>
+          <div className="text-2xl sm:text-3xl font-bold text-slate-900 tabular-nums">37</div>
           <span className="text-[10px] text-stone-400 font-mono block">32 vendas • 5 loc.</span>
         </div>
 
@@ -155,7 +155,7 @@ export default function DashboardOverviewPage() {
             <span className="text-[10px] font-mono uppercase tracking-wider">Leads Novos</span>
             <Users2 className="w-3.5 h-3.5 text-stone-700" />
           </div>
-          <div className="font-display text-3xl text-stone-950 tabular-nums">8</div>
+          <div className="text-2xl sm:text-3xl font-bold text-slate-900 tabular-nums">8</div>
           <span className="text-[10px] text-emerald-700 font-mono font-medium block">
             +3 sem contato
           </span>
@@ -167,7 +167,7 @@ export default function DashboardOverviewPage() {
             <span className="text-[10px] font-mono uppercase tracking-wider">Visitas</span>
             <Calendar className="w-3.5 h-3.5 text-stone-700" />
           </div>
-          <div className="font-display text-3xl text-stone-950 tabular-nums">5</div>
+          <div className="text-2xl sm:text-3xl font-bold text-slate-900 tabular-nums">5</div>
           <span className="text-[10px] text-stone-400 font-mono block">Próximos 7 dias</span>
         </div>
 
@@ -177,7 +177,7 @@ export default function DashboardOverviewPage() {
             <span className="text-[10px] font-mono uppercase tracking-wider">Alcance</span>
             <Eye className="w-3.5 h-3.5 text-stone-700" />
           </div>
-          <div className="font-display text-3xl text-stone-950 tabular-nums">21.8k</div>
+          <div className="text-2xl sm:text-3xl font-bold text-slate-900 tabular-nums">21.8k</div>
           <span className="text-[10px] text-emerald-700 font-mono font-medium block">
             +18% vs anterior
           </span>
@@ -190,7 +190,7 @@ export default function DashboardOverviewPage() {
         <div className="lg:col-span-8 bg-white p-6 sm:p-8 rounded-2xl border border-stone-200/80 shadow-[0_2px_12px_rgba(0,0,0,0.02)] space-y-6">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="font-display text-2xl font-normal text-stone-950">
+              <h3 className="text-xl font-bold text-slate-900 tracking-tight">
                 Tráfego & Conversão de Leads (Últimas 6 Semanas)
               </h3>
               <p className="text-xs text-stone-500 font-light mt-0.5">
@@ -250,7 +250,7 @@ export default function DashboardOverviewPage() {
         {/* Upcoming Visits / Agenda Widget */}
         <div className="lg:col-span-4 bg-white p-6 rounded-2xl border border-stone-200/80 shadow-[0_2px_12px_rgba(0,0,0,0.02)] space-y-4">
           <div className="flex items-center justify-between pb-2 border-b border-stone-100">
-            <h3 className="font-display text-xl font-normal text-stone-950">
+            <h3 className="text-lg font-bold text-slate-900 tracking-tight">
               Próximas Visitas
             </h3>
             <Link href="/dashboard/agenda" className="text-xs font-medium uppercase tracking-wider text-stone-500 hover:text-stone-950 transition">
@@ -283,7 +283,7 @@ export default function DashboardOverviewPage() {
         {/* Recent Leads */}
         <div className="lg:col-span-7 bg-white p-6 sm:p-8 rounded-2xl border border-stone-200/80 shadow-[0_2px_12px_rgba(0,0,0,0.02)] space-y-5">
           <div className="flex items-center justify-between">
-            <h3 className="font-display text-2xl font-normal text-stone-950">
+            <h3 className="text-xl font-bold text-slate-900 tracking-tight">
               Oportunidades Recentes (CRM)
             </h3>
             <Link href="/dashboard/leads" className="text-xs font-medium uppercase tracking-wider text-stone-950 hover:text-stone-600 transition inline-flex items-center gap-1.5">
@@ -337,7 +337,7 @@ export default function DashboardOverviewPage() {
         {/* Most Viewed Properties */}
         <div className="lg:col-span-5 bg-white p-6 sm:p-8 rounded-2xl border border-stone-200/80 shadow-[0_2px_12px_rgba(0,0,0,0.02)] space-y-4">
           <div className="flex items-center justify-between pb-2 border-b border-stone-100">
-            <h3 className="font-display text-xl font-normal text-stone-950">
+            <h3 className="text-lg font-bold text-slate-900 tracking-tight">
               Imóveis Mais Visualizados
             </h3>
             <Link href="/dashboard/imoveis" className="text-xs font-medium uppercase tracking-wider text-stone-500 hover:text-stone-950 transition">
@@ -354,7 +354,7 @@ export default function DashboardOverviewPage() {
                   className="w-14 h-14 rounded-lg object-cover shrink-0 border border-stone-200"
                 />
                 <div className="min-w-0 flex-1">
-                  <h4 className="font-display text-sm text-stone-950 truncate font-normal">
+                  <h4 className="text-sm font-semibold text-slate-900 truncate">
                     {p.title}
                   </h4>
                   <span className="text-xs font-medium text-stone-950 block tabular-nums">
