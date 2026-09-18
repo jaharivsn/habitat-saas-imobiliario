@@ -96,11 +96,21 @@ export default function NovoImovelStepperPage() {
   ];
 
   const handleNext = () => {
-    if (step < 10) setStep(step + 1);
+    if (step < 10) {
+      setStep(step + 1);
+      if (typeof window !== "undefined") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
   };
 
   const handlePrev = () => {
-    if (step > 1) setStep(step - 1);
+    if (step > 1) {
+      setStep(step - 1);
+      if (typeof window !== "undefined") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
   };
 
   return (
@@ -121,8 +131,19 @@ export default function NovoImovelStepperPage() {
       </div>
 
       {/* Stepper Progress Indicator */}
-      <div className="bg-white p-4 rounded-xl border border-slate-200/90 shadow-subtle overflow-x-auto">
-        <div className="flex items-center justify-between min-w-[650px] relative">
+      <div className="bg-white p-5 rounded-xl border border-slate-200/90 shadow-subtle overflow-x-auto space-y-4">
+        {/* Progress percentual header */}
+        <div className="flex items-center justify-between pb-2 border-b border-slate-100 text-xs font-semibold text-slate-700">
+          <span className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-gold-500 animate-pulse" />
+            <span>Etapa {step} de 10 — {stepTitles[step - 1]}</span>
+          </span>
+          <span className="font-mono text-gold-700 font-bold bg-gold-50 px-2 py-0.5 rounded border border-gold-200">
+            {step * 10}% Concluído
+          </span>
+        </div>
+
+        <div className="flex items-center justify-between min-w-[650px] relative pt-1">
           <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 h-0.5 bg-slate-200 -z-0" />
           {stepTitles.map((title, idx) => {
             const stepNum = idx + 1;

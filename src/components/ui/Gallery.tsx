@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, X, Maximize2 } from "lucide-react";
 
 interface GalleryProps {
@@ -12,6 +12,17 @@ interface GalleryProps {
 export default function Gallery({ photos, title, className = "" }: GalleryProps) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxOpen(false);
+      if (e.key === "ArrowLeft") setCurrentIndex((prev) => (prev - 1 + photos.length) % photos.length);
+      if (e.key === "ArrowRight") setCurrentIndex((prev) => (prev + 1) % photos.length);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightboxOpen, photos.length]);
 
   const openLightbox = (idx: number) => {
     setCurrentIndex(idx);
@@ -74,15 +85,15 @@ export default function Gallery({ photos, title, className = "" }: GalleryProps)
         <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4">
           <button
             onClick={() => setLightboxOpen(false)}
-            className="absolute top-6 right-6 z-50 text-white/80 hover:text-white p-2 rounded-full bg-white/10 transition"
+            className="absolute top-6 right-6 z-50 text-white/80 hover:text-white min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition"
             aria-label="Fechar galeria"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5" />
           </button>
 
           <button
             onClick={prev}
-            className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-50 text-white p-3 rounded-full bg-white/10 hover:bg-white/20 transition"
+            className="absolute left-4 sm:left-8 top-1/2 -translate-y-1/2 z-50 text-white min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition"
             aria-label="Foto anterior"
           >
             <ChevronLeft className="w-6 h-6" />
@@ -94,14 +105,14 @@ export default function Gallery({ photos, title, className = "" }: GalleryProps)
               alt={`${title} - Foto ${currentIndex + 1}`}
               className="max-h-[75vh] w-auto object-contain rounded-lg shadow-luxury"
             />
-            <div className="mt-4 text-white text-xs font-serif tracking-wide">
+            <div className="mt-4 text-stone-300 text-xs tracking-wider uppercase font-medium">
               Foto {currentIndex + 1} de {photos.length} — {title}
             </div>
           </div>
 
           <button
             onClick={next}
-            className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-50 text-white p-3 rounded-full bg-white/10 hover:bg-white/20 transition"
+            className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-50 text-white min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition"
             aria-label="Próxima foto"
           >
             <ChevronRight className="w-6 h-6" />

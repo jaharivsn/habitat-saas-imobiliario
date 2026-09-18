@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   List,
@@ -11,6 +11,7 @@ import {
   Search,
   RotateCcw,
   Sparkles,
+  X,
 } from "lucide-react";
 import PropertyCard from "@/components/property/PropertyCard";
 import InteractiveMapMock from "@/components/search/InteractiveMapMock";
@@ -51,6 +52,24 @@ export default function PropertySearchHub({
 
   // Advanced filters state
   const [advancedFilters, setAdvancedFilters] = useState<any>({});
+
+  // Input ref para atalho de teclado "/"
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (
+        e.key === "/" &&
+        document.activeElement?.tagName !== "INPUT" &&
+        document.activeElement?.tagName !== "TEXTAREA"
+      ) {
+        e.preventDefault();
+        searchInputRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   // Filtered Properties Logic
   const filteredProperties = useMemo(() => {
@@ -167,40 +186,45 @@ export default function PropertySearchHub({
       {/* Main Filter Bar */}
       <div className="bg-white p-5 sm:p-6 border border-stone-200 mb-10 space-y-4">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-3">
-          {/* Keyword Search */}
-          <div className="lg:col-span-4 relative">
-            <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          {/* Keyword Search com atalho de teclado / */}
+          <div className="lg:col-span-4 relative flex items-center">
+            <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
+              ref={searchInputRef}
               type="text"
               placeholder="Buscar por cidade, bairro, condomínio ou código..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 bg-stone-50/70 border border-stone-200 text-xs sm:text-sm text-stone-900 focus:outline-none focus:border-stone-950 placeholder:text-stone-400 font-light"
+              className="w-full pl-10 pr-9 py-3 bg-stone-50/70 border border-stone-200 text-xs sm:text-sm text-stone-900 focus:outline-none focus:border-stone-950 placeholder:text-stone-400 font-light transition-colors"
             />
+            <kbd className="hidden sm:inline-flex items-center justify-center absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-stone-400 bg-stone-200/60 px-1.5 py-0.5 rounded font-mono border border-stone-300/60 pointer-events-none" title="Pressione / para buscar">
+              /
+            </kbd>
           </div>
 
-          {/* Operation Selector */}
+          {/* Operation Selector Bespoke */}
           {!forcedOperation && (
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 relative">
               <select
                 value={operation}
                 onChange={(e) => setOperation(e.target.value)}
-                className="w-full py-3 px-3 bg-stone-50/70 border border-stone-200 text-xs sm:text-sm text-stone-800 focus:outline-none cursor-pointer font-light"
+                className="w-full py-3 pl-3 pr-8 bg-stone-50/70 border border-stone-200 text-xs sm:text-sm text-stone-800 focus:outline-none focus:border-stone-950 appearance-none cursor-pointer font-light transition-colors"
               >
                 <option value="todos">Venda & Locação</option>
                 <option value="venda">Comprar (Venda)</option>
                 <option value="aluguel">Alugar (Locação)</option>
               </select>
+              <ChevronDown className="w-3.5 h-3.5 text-stone-400 pointer-events-none absolute right-3 top-1/2 -translate-y-1/2" />
             </div>
           )}
 
-          {/* Property Type */}
+          {/* Property Type Bespoke */}
           {!forcedCommercial && (
-            <div className="lg:col-span-2">
+            <div className="lg:col-span-2 relative">
               <select
                 value={propertyType}
                 onChange={(e) => setPropertyType(e.target.value)}
-                className="w-full py-3 px-3 bg-stone-50/70 border border-stone-200 text-xs sm:text-sm text-stone-800 focus:outline-none cursor-pointer font-light"
+                className="w-full py-3 pl-3 pr-8 bg-stone-50/70 border border-stone-200 text-xs sm:text-sm text-stone-800 focus:outline-none focus:border-stone-950 appearance-none cursor-pointer font-light transition-colors"
               >
                 <option value="todos">Todos os Tipos</option>
                 <option value="casa">Casas & Mansões</option>
@@ -209,15 +233,16 @@ export default function PropertySearchHub({
                 <option value="condominio">Condomínio Fechado</option>
                 <option value="comercial">Comercial</option>
               </select>
+              <ChevronDown className="w-3.5 h-3.5 text-stone-400 pointer-events-none absolute right-3 top-1/2 -translate-y-1/2" />
             </div>
           )}
 
-          {/* City */}
-          <div className="lg:col-span-2">
+          {/* City Bespoke */}
+          <div className="lg:col-span-2 relative">
             <select
               value={city}
               onChange={(e) => setCity(e.target.value)}
-              className="w-full py-3 px-3 bg-stone-50/70 border border-stone-200 text-xs sm:text-sm text-stone-800 focus:outline-none cursor-pointer font-light"
+              className="w-full py-3 pl-3 pr-8 bg-stone-50/70 border border-stone-200 text-xs sm:text-sm text-stone-800 focus:outline-none focus:border-stone-950 appearance-none cursor-pointer font-light transition-colors"
             >
               <option value="todas">Todas as Cidades</option>
               <option value="São Paulo">São Paulo</option>
@@ -227,6 +252,7 @@ export default function PropertySearchHub({
               <option value="Florianópolis">Florianópolis</option>
               <option value="Winter Garden">Winter Garden (EUA)</option>
             </select>
+            <ChevronDown className="w-3.5 h-3.5 text-stone-400 pointer-events-none absolute right-3 top-1/2 -translate-y-1/2" />
           </div>
 
           {/* Advanced Filter Button */}
@@ -246,12 +272,58 @@ export default function PropertySearchHub({
                 onClick={resetFilters}
                 className="p-3 text-stone-400 hover:text-stone-800 hover:bg-stone-100 transition-colors border border-transparent hover:border-stone-200"
                 title="Limpar todos os filtros"
+                aria-label="Limpar todos os filtros"
               >
                 <RotateCcw className="w-4 h-4" />
               </button>
             )}
           </div>
         </div>
+
+        {/* Chips de Filtros Ativos */}
+        {(searchTerm || operation !== "todos" || propertyType !== "todos" || city !== "todas" || Object.keys(advancedFilters).length > 0) && (
+          <div className="pt-3 border-t border-stone-100 flex flex-wrap items-center gap-2 text-xs">
+            <span className="text-[10px] uppercase tracking-wider text-stone-400 font-medium">Filtros ativos:</span>
+            {searchTerm && (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-stone-100 text-stone-800 text-[11px] rounded-sm border border-stone-200">
+                "{searchTerm}"
+                <button onClick={() => setSearchTerm("")} className="hover:text-stone-950 p-0.5" aria-label="Remover busca">
+                  <X className="w-3 h-3" />
+                </button>
+              </span>
+            )}
+            {operation !== "todos" && (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-stone-100 text-stone-800 text-[11px] rounded-sm border border-stone-200">
+                {operation === "venda" ? "Venda" : "Locação"}
+                <button onClick={() => setOperation("todos")} className="hover:text-stone-950 p-0.5" aria-label="Remover operação">
+                  <X className="w-3 h-3" />
+                </button>
+              </span>
+            )}
+            {propertyType !== "todos" && (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-stone-100 text-stone-800 text-[11px] rounded-sm capitalize border border-stone-200">
+                {propertyType}
+                <button onClick={() => setPropertyType("todos")} className="hover:text-stone-950 p-0.5" aria-label="Remover tipo">
+                  <X className="w-3 h-3" />
+                </button>
+              </span>
+            )}
+            {city !== "todas" && (
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-stone-100 text-stone-800 text-[11px] rounded-sm border border-stone-200">
+                {city}
+                <button onClick={() => setCity("todas")} className="hover:text-stone-950 p-0.5" aria-label="Remover cidade">
+                  <X className="w-3 h-3" />
+                </button>
+              </span>
+            )}
+            <button
+              onClick={resetFilters}
+              className="text-[11px] text-stone-500 hover:text-stone-950 underline underline-offset-2 ml-1 cursor-pointer"
+            >
+              Limpar todos
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Results Header: Count, Sort, View Toggle */}
@@ -269,22 +341,25 @@ export default function PropertySearchHub({
         </div>
 
         <div className="flex items-center gap-3">
-          {/* Sort Dropdown */}
-          <div className="flex items-center gap-1.5 text-xs text-stone-600">
-            <ArrowUpDown className="w-3.5 h-3.5 text-stone-400" />
+          {/* Sort Dropdown Bespoke */}
+          <div className="flex items-center gap-1.5 text-xs text-stone-600 relative">
+            <ArrowUpDown className="w-3.5 h-3.5 text-stone-400 shrink-0" />
             <span className="hidden sm:inline">Ordenar:</span>
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-              className="bg-transparent font-semibold text-stone-800 focus:outline-none cursor-pointer"
-            >
-              <option value="destaques">Destaques da Curadoria</option>
-              <option value="recentes">Mais recentes</option>
-              <option value="menor-preco">Menor preço</option>
-              <option value="maior-preco">Maior preço</option>
-              <option value="maior-area">Maior área útil</option>
-              <option value="mais-vistos">Mais visualizados</option>
-            </select>
+            <div className="relative inline-flex items-center">
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="bg-transparent font-semibold text-stone-800 focus:outline-none appearance-none pr-5 cursor-pointer"
+              >
+                <option value="destaques">Destaques da Curadoria</option>
+                <option value="recentes">Mais recentes</option>
+                <option value="menor-preco">Menor preço</option>
+                <option value="maior-preco">Maior preço</option>
+                <option value="maior-area">Maior área útil</option>
+                <option value="mais-vistos">Mais visualizados</option>
+              </select>
+              <ChevronDown className="w-3 h-3 text-stone-500 pointer-events-none absolute right-0 top-1/2 -translate-y-1/2" />
+            </div>
           </div>
 
           {/* View Mode Toggle */}

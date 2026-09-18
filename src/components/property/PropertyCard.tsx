@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Heart, ChevronLeft, ChevronRight } from "lucide-react";
+import { Heart, ChevronLeft, ChevronRight, Share2 } from "lucide-react";
 import { Property } from "@/types";
 import { formatPrice } from "@/lib/utils";
 
@@ -14,6 +14,7 @@ interface PropertyCardProps {
 export default function PropertyCard({ property, priority = false }: PropertyCardProps) {
   const [currentPhotoIdx, setCurrentPhotoIdx] = useState(0);
   const [isFavorited, setIsFavorited] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     try {
@@ -42,6 +43,17 @@ export default function PropertyCard({ property, priority = false }: PropertyCar
     } catch {}
   };
 
+  const handleShare = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (typeof window !== "undefined") {
+      const url = `${window.location.origin}/imovel/${property.slug}`;
+      navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
   const nextPhoto = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -54,7 +66,7 @@ export default function PropertyCard({ property, priority = false }: PropertyCar
     setCurrentPhotoIdx((prev) => (prev - 1 + property.photos.length) % property.photos.length);
   };
 
-  // Specs em linha única refinada
+  // Specs em linha única refinada com banheiros incluídos
   const specsParts: string[] = [];
   if (property.builtArea) {
     specsParts.push(`${property.builtArea} m²`);
@@ -65,6 +77,9 @@ export default function PropertyCard({ property, priority = false }: PropertyCar
     specsParts.push(`${property.suites} ${property.suites === 1 ? "suíte" : "suítes"}`);
   } else if (property.bedrooms > 0) {
     specsParts.push(`${property.bedrooms} ${property.bedrooms === 1 ? "quarto" : "quartos"}`);
+  }
+  if (property.bathrooms > 0) {
+    specsParts.push(`${property.bathrooms} ${property.bathrooms === 1 ? "banheiro" : "banheiros"}`);
   }
   if (property.parkingSpots > 0) {
     specsParts.push(`${property.parkingSpots} ${property.parkingSpots === 1 ? "vaga" : "vagas"}`);
@@ -87,15 +102,48 @@ export default function PropertyCard({ property, priority = false }: PropertyCar
         {/* Overlay imperceptível */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
 
-        {/* Tag única de operação */}
-        <div className="absolute top-3 left-3 z-10 pointer-events-none">
-          <span className="bg-white/90 backdrop-blur-md text-stone-900 text-[10px] font-medium uppercase tracking-[0.2em] px-2.5 py-1">
+        {/* Badges de Operação e Status */}
+        <div className="absolute top-3 left-3 z-10 flex flex-wrap items-center gap-1.5 pointer-events-none">
+          <span className="bg-white/95 backdrop-blur-md text-stone-900 text-[9px] font-medium uppercase tracking-[0.2em] px-2 py-1 shadow-xs">
             {property.operation === "aluguel" ? "Locação" : "Venda"}
           </span>
+          {property.isFeatured && (
+            <span className="bg-stone-950 text-white text-[9px] font-semibold uppercase tracking-[0.16em] px-2 py-1 shadow-xs">
+              Destaque
+            </span>
+          )}
+          {property.isLaunch && (
+            <span className="bg-amber-800 text-white text-[9px] font-semibold uppercase tracking-[0.16em] px-2 py-1 shadow-xs">
+              Lançamento
+            </span>
+          )}
+          {property.isNew && !property.isLaunch && (
+            <span className="bg-stone-800 text-stone-100 text-[9px] font-semibold uppercase tracking-[0.16em] px-2 py-1 shadow-xs">
+              Novo
+            </span>
+          )}
         </div>
 
-        {/* Botão de favoritar minimalista */}
-        <div className="absolute top-3 right-3 z-10">
+        {/* Botões de Ação no Topo Direito (Favoritar & Compartilhar) */}
+        <div className="absolute top-3 right-3 z-10 flex items-center gap-1.5">
+          {/* Compartilhar 1-clique */}
+          <div className="relative">
+            <button
+              onClick={handleShare}
+              className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md text-stone-700 hover:text-stone-950 transition-colors flex items-center justify-center shadow-xs"
+              title="Compartilhar imóvel"
+              aria-label="Compartilhar imóvel"
+            >
+              <Share2 className="w-3.5 h-3.5" />
+            </button>
+            {copied && (
+              <span className="absolute -bottom-7 right-0 bg-stone-950 text-white text-[9px] px-2 py-0.5 rounded shadow-sm whitespace-nowrap animate-in fade-in duration-150">
+                Link copiado!
+              </span>
+            )}
+          </div>
+
+          {/* Favoritar */}
           <button
             onClick={toggleFavorite}
             className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-md text-stone-700 hover:text-rose-600 transition-colors flex items-center justify-center shadow-xs"
@@ -160,11 +208,24 @@ export default function PropertyCard({ property, priority = false }: PropertyCar
             </h3>
           </Link>
 
-          {/* Especificações em linha única refinada */}
+          {/* Especificações completas em linha única refinada */}
           {specs && (
             <p className="text-xs text-stone-500 font-light tracking-wide pt-0.5 tabular-nums">
               {specs}
             </p>
+          )}
+
+          {/* Curadoria Corretor/Imobiliária */}
+          {property.broker && (
+            <div className="pt-1 text-[11px] text-stone-400 truncate">
+              Curadoria por{" "}
+              <Link
+                href={`/corretor/${property.broker.slug}`}
+                className="text-stone-700 hover:text-stone-950 font-medium transition-colors"
+              >
+                {property.broker.name}
+              </Link>
+            </div>
           )}
         </div>
 

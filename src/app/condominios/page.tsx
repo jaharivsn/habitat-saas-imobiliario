@@ -25,7 +25,7 @@ export default function CondominiosPage() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50">
+    <div className="min-h-screen flex flex-col bg-[#FAF9F6]">
       <Header />
 
       <main className="flex-1 pb-20">

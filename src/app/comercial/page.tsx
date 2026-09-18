@@ -5,7 +5,7 @@ import PropertySearchHub from "@/components/search/PropertySearchHub";
 
 export default function ComercialPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50">
+    <div className="min-h-screen flex flex-col bg-[#FAF9F6]">
       <Header />
       <main className="flex-1">
         <Suspense fallback={<div className="p-12 text-center text-slate-400">Carregando imóveis corporativos...</div>}>

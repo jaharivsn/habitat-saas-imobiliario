@@ -37,6 +37,13 @@ export default function LeadsCRMPage() {
     );
   };
 
+  const advanceLeadStatus = (leadId: string, currentStatus: LeadStatus) => {
+    const currentIdx = KANBAN_STAGES.findIndex((s) => s.id === currentStatus);
+    if (currentIdx !== -1 && currentIdx < KANBAN_STAGES.length - 1) {
+      updateLeadStatus(leadId, KANBAN_STAGES[currentIdx + 1].id);
+    }
+  };
+
   const filtered = leads.filter((l) => {
     if (statusFilter !== "todos" && l.status !== statusFilter) return false;
     if (search.trim()) {
@@ -124,87 +131,113 @@ export default function LeadsCRMPage() {
 
       {/* KANBAN VIEW */}
       {viewMode === "kanban" && (
-        <div className="overflow-x-auto pb-6">
-          <div className="flex items-start gap-4 min-w-[1400px]">
-            {KANBAN_STAGES.map((stage) => {
-              const stageLeads = filtered.filter((l) => l.status === stage.id);
-              return (
-                <div
-                  key={stage.id}
-                  className={`w-72 rounded-xl border-t-4 ${stage.color} bg-slate-100/70 p-3 shrink-0 flex flex-col max-h-[750px] shadow-subtle`}
-                >
-                  <div className="flex items-center justify-between pb-3 px-1">
-                    <span className="font-bold text-xs text-navy-950 uppercase tracking-wide">
-                      {stage.label}
-                    </span>
-                    <span className="w-5 h-5 rounded-full bg-white text-slate-700 font-bold text-[10px] flex items-center justify-center shadow-xs">
-                      {stageLeads.length}
-                    </span>
-                  </div>
+        <div className="space-y-2">
+          {/* Scroll Affordance Bar */}
+          <div className="flex items-center justify-between text-[11px] text-slate-500 px-1 font-medium">
+            <span>8 etapas ativas do pipeline de conversão</span>
+            <span className="hidden sm:inline-flex items-center gap-1 text-gold-700 font-semibold">
+              <span>Deslize horizontalmente para navegar pelo funil</span>
+              <ArrowRight className="w-3 h-3" />
+            </span>
+          </div>
 
-                  {/* Cards inside column */}
-                  <div className="space-y-3 overflow-y-auto pr-1 flex-1">
-                    {stageLeads.map((lead) => (
-                      <div
-                        key={lead.id}
-                        className="bg-white rounded-xl p-3.5 border border-slate-200/90 shadow-xs hover:shadow-md transition space-y-2.5"
-                      >
-                        <div className="flex items-center justify-between">
-                          <span className="font-bold text-xs text-navy-950 truncate max-w-[150px]">
-                            {lead.name}
-                          </span>
-                          <span className="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-medium">
-                            {lead.source}
-                          </span>
-                        </div>
+          <div className="overflow-x-auto pb-6">
+            <div className="flex items-start gap-4 min-w-[1400px]">
+              {KANBAN_STAGES.map((stage) => {
+                const stageLeads = filtered.filter((l) => l.status === stage.id);
+                return (
+                  <div
+                    key={stage.id}
+                    className={`w-72 rounded-xl border-t-4 ${stage.color} bg-slate-100/70 p-3 shrink-0 flex flex-col max-h-[750px] shadow-subtle`}
+                  >
+                    <div className="flex items-center justify-between pb-3 px-1">
+                      <span className="font-bold text-xs text-navy-950 uppercase tracking-wide">
+                        {stage.label}
+                      </span>
+                      <span className="w-5 h-5 rounded-full bg-white text-slate-700 font-bold text-[10px] flex items-center justify-center shadow-xs">
+                        {stageLeads.length}
+                      </span>
+                    </div>
 
-                        <p className="text-[11px] text-slate-600 line-clamp-2 leading-tight">
-                          {lead.propertyTitle}
-                        </p>
+                    {/* Cards inside column */}
+                    <div className="space-y-3 overflow-y-auto pr-1 flex-1">
+                      {stageLeads.map((lead) => (
+                        <div
+                          key={lead.id}
+                          className="bg-white rounded-xl p-3.5 border border-slate-200/90 shadow-xs hover:shadow-md transition space-y-2.5"
+                        >
+                          <div className="flex items-center justify-between">
+                            <span className="font-bold text-xs text-navy-950 truncate max-w-[150px]">
+                              {lead.name}
+                            </span>
+                            <span className="text-[10px] bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded font-medium">
+                              {lead.source}
+                            </span>
+                          </div>
 
-                        <div className="text-[10px] text-slate-400 bg-slate-50 p-2 rounded-lg leading-tight line-clamp-2">
-                          "{lead.lastInteraction}"
-                        </div>
+                          <p className="text-[11px] text-slate-600 line-clamp-2 leading-tight">
+                            {lead.propertyTitle}
+                          </p>
 
-                        {/* Card Footer Actions */}
-                        <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
-                          <a
-                            href={`https://wa.me/${lead.whatsapp}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="p-1.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white rounded-lg transition"
-                            title="Conversar no WhatsApp"
-                          >
-                            <MessageCircle className="w-3.5 h-3.5" />
-                          </a>
+                          <div className="text-[10px] text-slate-400 bg-slate-50 p-2 rounded-lg leading-tight line-clamp-2">
+                            "{lead.lastInteraction}"
+                          </div>
 
-                          <div className="flex items-center gap-1">
-                            {/* Quick Stage Mover */}
-                            <select
-                              value={lead.status}
-                              onChange={(e) =>
-                                updateLeadStatus(lead.id, e.target.value as LeadStatus)
-                              }
-                              className="bg-transparent text-[10px] text-slate-500 font-semibold focus:outline-none cursor-pointer"
-                            >
-                              {KANBAN_STAGES.map((s) => (
-                                <option key={s.id} value={s.id}>
-                                  Mover: {s.label}
-                                </option>
-                              ))}
-                            </select>
+                          {/* Card Footer Actions */}
+                          <div className="pt-2 border-t border-slate-100 flex items-center justify-between">
+                            <div className="flex items-center gap-1.5">
+                              <a
+                                href={`https://wa.me/${lead.whatsapp}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-1.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-600 hover:text-white rounded-lg transition"
+                                title="Conversar no WhatsApp"
+                                aria-label="Conversar no WhatsApp"
+                              >
+                                <MessageCircle className="w-3.5 h-3.5" />
+                              </a>
 
-                            <Link
-                              href={`/dashboard/leads/${lead.id}`}
-                              className="text-[11px] font-bold text-navy-900 hover:text-gold-600 ml-1 inline-flex items-center gap-1"
-                            >
-                              <span>Ver</span>
-                              <ArrowRight className="w-3 h-3" />
-                            </Link>
+                              {stage.id !== "fechado" && stage.id !== "perdido" && (
+                                <button
+                                  type="button"
+                                  onClick={() => advanceLeadStatus(lead.id, lead.status)}
+                                  className="px-2 py-1 bg-slate-100 hover:bg-navy-950 hover:text-white text-slate-700 rounded-md text-[10px] font-semibold transition flex items-center gap-1"
+                                  title="Avançar lead para a próxima etapa do funil"
+                                >
+                                  <span>Avançar</span>
+                                  <ArrowRight className="w-2.5 h-2.5" />
+                                </button>
+                              )}
+                            </div>
+
+                            <div className="flex items-center gap-1">
+                              {/* Quick Stage Mover Dropdown */}
+                              <select
+                                value={lead.status}
+                                onChange={(e) =>
+                                  updateLeadStatus(lead.id, e.target.value as LeadStatus)
+                                }
+                                className="bg-transparent text-[10px] text-slate-500 font-semibold focus:outline-none cursor-pointer"
+                                aria-label="Mover lead de etapa"
+                              >
+                                {KANBAN_STAGES.map((s) => (
+                                  <option key={s.id} value={s.id}>
+                                    {s.label}
+                                  </option>
+                                ))}
+                              </select>
+
+                              <Link
+                                href={`/dashboard/leads/${lead.id}`}
+                                className="text-[11px] font-bold text-navy-900 hover:text-gold-600 ml-1 inline-flex items-center gap-1"
+                              >
+                                <span>Ver</span>
+                                <ArrowRight className="w-3 h-3" />
+                              </Link>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
 
                     {stageLeads.length === 0 && (
                       <div className="py-8 text-center text-[11px] text-slate-400 border border-dashed border-slate-200 rounded-xl">
@@ -217,6 +250,7 @@ export default function LeadsCRMPage() {
             })}
           </div>
         </div>
+      </div>
       )}
 
       {/* TABLE VIEW */}
