@@ -48,7 +48,9 @@ export default function Drawer({
           )}
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-slate-200/80 hover:bg-slate-300 text-slate-700 flex items-center justify-center transition"
+            className="w-10 h-10 rounded-full bg-slate-200/80 hover:bg-slate-300 text-slate-700 flex items-center justify-center transition min-h-[44px] min-w-[44px]"
+            aria-label="Fechar painel"
+            title="Fechar"
           >
             <X className="w-4 h-4" />
           </button>

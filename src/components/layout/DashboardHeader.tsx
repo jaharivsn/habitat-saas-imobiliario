@@ -42,7 +42,9 @@ export default function DashboardHeader({ onToggleMobileSidebar }: DashboardHead
             <button
               type="button"
               onClick={onToggleMobileSidebar}
-              className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100"
+              className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 min-h-[44px] min-w-[44px] flex items-center justify-center"
+              aria-label="Abrir menu lateral"
+              title="Abrir menu lateral"
             >
               <Menu className="w-5 h-5" />
             </button>

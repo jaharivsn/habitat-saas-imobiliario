@@ -119,9 +119,9 @@ export default function EntrarPage() {
             <div>
               <div className="flex items-center justify-between mb-1.5">
                 <label className="font-semibold uppercase tracking-wider text-[10px] text-slate-500">Senha</label>
-                <a href="#" className="text-[11px] font-medium text-gold-700 hover:text-navy-950 transition">
+                <Link href="/contato?assunto=recuperacao-senha" className="text-[11px] font-medium text-gold-700 hover:text-navy-950 transition">
                   Esqueceu a senha?
-                </a>
+                </Link>
               </div>
               <div className="relative">
                 <Lock className="w-4 h-4 text-gold-700 absolute left-3.5 top-1/2 -translate-y-1/2" />

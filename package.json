@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "tsc --noEmit",
+    "qa": "node scripts/qa-smoke-test.mjs",
+    "qa:worker": "node scripts/worker-qa-audit.mjs"
   },
   "dependencies": {
     "framer-motion": "^13.2.0",

@@ -84,14 +84,13 @@ export default function BlogPage() {
                 </div>
 
                 <div className="p-6 pt-0 border-t border-stone-100 flex items-center justify-between mt-4">
-                  <span className="text-[11px] text-slate-400 font-mono">{p.date}</span>
-                  <a
-                    href="#"
+                  <Link
+                    href={`/contato?assunto=artigo&ref=${p.slug}`}
                     className="text-[11px] font-semibold uppercase tracking-wider text-navy-950 hover:text-gold-700 flex items-center gap-1 transition"
                   >
                     <span>Ler Artigo</span>
                     <ArrowRight className="w-3 h-3" />
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}

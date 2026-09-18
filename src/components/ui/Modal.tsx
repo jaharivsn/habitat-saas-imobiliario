@@ -68,7 +68,9 @@ export default function Modal({
             <button
               type="button"
               onClick={onClose}
-              className="w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 flex items-center justify-center transition"
+              className="w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 flex items-center justify-center transition min-h-[44px] min-w-[44px]"
+              aria-label="Fechar janela modal"
+              title="Fechar"
             >
               <X className="w-4 h-4" />
             </button>

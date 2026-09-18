@@ -91,7 +91,9 @@ export default function AdvancedFilterModal({
 
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-stone-100 hover:bg-stone-200/80 text-stone-600 flex items-center justify-center transition-colors"
+            className="w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200/80 text-stone-600 flex items-center justify-center transition-colors min-h-[44px] min-w-[44px]"
+            aria-label="Fechar modal de filtros"
+            title="Fechar filtros avançados"
           >
             <X className="w-4 h-4" />
           </button>
